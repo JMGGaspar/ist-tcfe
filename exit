@@ -1,0 +1,60 @@
+[33mcommit 73bc36acdc9577051d205faa27f793531c6a1a46[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: JMGGaspar <joaomgomesgaspar@tecnico.ulisboa.pt>
+Date:   Tue Mar 9 12:35:05 2021 -0800
+
+    Limpar Teste
+
+[33mcommit 4888868c15fb0d5db4b964a07e7fedf262d69027[m
+Author: JMGGaspar <joaomgomesgaspar@tecnico.ulisboa.pt>
+Date:   Tue Mar 9 12:31:13 2021 -0800
+
+    Teste
+
+[33mcommit 18f81296bd4236f2917d2314174e40a0eee20c50[m
+Author: JMGGaspar <joaomgomesgaspar@tecnico.ulisboa.pt>
+Date:   Tue Mar 9 08:21:32 2021 -0800
+
+    Limpar Ficheiros
+
+[33mcommit 119603d180dcaad02fb309becc6eb24a599e49a0[m
+Author: JMGGaspar <joaomgomesgaspar@tecnico.ulisboa.pt>
+Date:   Tue Mar 9 08:14:30 2021 -0800
+
+    Ficheiros à toa
+
+[33mcommit f508eb922318cd577030a074d0f02e9ce1ff3257[m
+Merge: ee5175e fdc6597
+Author: Jose T. de Sousa <jose.t.de.sousa@gmail.com>
+Date:   Sat Mar 6 18:21:33 2021 +0000
+
+    Merge branch 'master' of github.com:jjts/ist-tcfe
+
+[33mcommit ee5175ee256d3bbc8074e3337da9f88e4c18d360[m
+Author: Jose T. de Sousa <jose.t.de.sousa@gmail.com>
+Date:   Sat Mar 6 18:21:11 2021 +0000
+
+    add first lab assignment
+
+[33mcommit fdc659720faba775070884950d0ad82810ca792b[m
+Author: Jose T. de Sousa <jose.t.de.sousa@gmail.com>
+Date:   Wed Mar 3 17:33:03 2021 +0000
+
+    Update README.md
+
+[33mcommit 76e8cbe93ec12c50ad9188a7d6803e29fb3ec5be[m
+Author: Jose T. de Sousa <jose.t.de.sousa@gmail.com>
+Date:   Tue Feb 23 19:40:53 2021 +0000
+
+    fix typos and stuff
+
+[33mcommit dc7e87aa963f0d863d2f7659811470e13fd202eb[m
+Author: Jose T. de Sousa <jose.t.de.sousa@gmail.com>
+Date:   Tue Feb 23 14:05:29 2021 +0000
+
+    improve readme
+
+[33mcommit 87159b762c3e567f5dac7aa73c5d3ab2657f23cc[m
+Author: Jose T. de Sousa <jose.t.de.sousa@gmail.com>
+Date:   Mon Feb 22 03:20:12 2021 +0000
+
+    initial commit
