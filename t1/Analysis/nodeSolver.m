@@ -1,14 +1,13 @@
+function V = nodeSolver(Data)
+
 format long
 pkg load symbolic
 
-fileID = fopen('Data96375.txt','r');
-Data = fscanf(fileID,'%f')
-fclose(fileID);
 
 %data  = [R1,R2,R3,R4,R5,R6,R7,Va,Id,Kb,Kc]
 
 for i= 1:7
-  Data(i) = 1/Data(i)  
+  Data(i) = 1/Data(i);
 endfor
 
 G1 = Data(1);
@@ -49,5 +48,4 @@ I O O -I O O O O; O O O Kc*G6 -I O -Kc*G6 I; O O O I O O O O]
 B = [O; O; Id; O; O; Va; O; O]
 
 V = A\B
-
-fprintf('He can now calculate the remaining Currents \n')
+end

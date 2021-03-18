@@ -1,8 +1,7 @@
+function I = meshSolver(Data)
+  
 format long
 
-fileID = fopen('Data96375.txt','r');
-Data = fscanf(fileID,'%f')
-fclose(fileID);
 
 %data  = [R1,R2,R3,R4,R5,R6,R7,Va,Id,Kb,Kc]
 R1 = Data(1);
@@ -24,5 +23,4 @@ A = [R1+R3+R4 R3 R4 O; Kb Kb-I O O; R4 O R4+R6+R7-Kc O ; O O O I]
 B = [Va; O; O; Id]
 
 I = A\B
-
-fprintf('He can now calculate the remaining Voltages \n')
+end
