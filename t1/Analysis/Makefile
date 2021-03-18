@@ -1,7 +1,7 @@
-octave.log: analysis.m
+octave.log: Solver.m
 	octave $< > $@
 
 clean:
-	@rm -f octave.log octave-workspace *.eps *~
+	@rm -f octave.log octave-workspace *.tex *~
 
 .PHONY: clean
