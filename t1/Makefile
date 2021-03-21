@@ -5,15 +5,15 @@
 # ------------------------------------------------------------
 
 all:
-	make -C mat
-	make -C sim
-	make -C doc
-	cp doc/report.pdf .
+	make -C Analysis
+	make -C Simulation
+	make -C Doc
+	cp Doc/report.pdf .
 
 clean:
-	make -C mat clean
-	make -C sim clean
-	make -C doc clean
+	make -C Analysis clean
+	make -C Simulation clean
+	make -C Doc clean
 
 .PHONY: all clean
 
