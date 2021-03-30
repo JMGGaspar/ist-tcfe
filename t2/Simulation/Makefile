@@ -3,10 +3,10 @@ all: ngspice.log
 	$(foreach i, $(NGSTABS), sed -n '/^$i_TAB/,/^$i_END/{p;/^$i_END/q}' $< | grep -v $i_TAB | grep -v $i_END | grep -v '#' | sed 's/\=/\&/g' | sed 's/$$/\\\\ \\hline/g' > $i_tab.tex;)
 
 
-ngspice.log: ../Simulation/t1.net
+ngspice.log: ../Simulation/t2.net
 	ngspice -b $< -o $@
 
 clean:
-	@rm -f ngspice.log *.tex *~
+	@rm -f ngspice.log *.tex *.pdf *.ps *~
 
 .PHONY: all clean

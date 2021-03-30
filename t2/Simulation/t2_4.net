@@ -12,10 +12,11 @@
 
 *******************************************
 * supply voltage
-Va 1 0 5.00894173155
+Vc 1 0 sin(0 1 1k)
 
-* Supply current
-Id 8 6 1.03365328826e-3
+
+* Capacitor
+C 8 6 1.03365328826e-3
 
 
 R1 1 2 1.02806435778e3
@@ -44,19 +45,21 @@ Hvs 5 8 Vprobe 8.11924814489e3
 
 
 
+
+.IC v(6)=5.474754e+00 v(8)=-2.97092e+00
 .control
 
 
+
 echo "********************************************"
-echo  "Operating point"
+echo  "Transient Analysis"
 echo "********************************************"
 
-op
 
-echo  "op_TAB"
-print all
-echo  "op_END"
+tran 0.01m 20m
 
+hardcopy trans_for.ps v(1) v(6)
+echo trans_for_FIG
 
 quit
 .endc
