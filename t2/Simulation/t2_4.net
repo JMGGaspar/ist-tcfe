@@ -63,19 +63,24 @@ echo "********************************************"
 
 tran 0.01m 20m
 
-hardcopy trans_for.ps v(1) v(6)
-echo trans_for_FIG
+hardcopy trans_forc.ps v(1) v(6)
+echo trans_forc_FIG
 
 
 echo "********************************************"
 echo  "Frequency analysis"
 echo "********************************************"
 
-ac dec 10 10 100MEG
+ac dec 10 0.1 100MEG
 
 hardcopy acm.ps v(6) v(1)
 echo acm_FIG
 
+hardcopy acm_db.ps db(v(6)) db(v(1))
+echo acm_db_FIG
+
+hardcopy acph.ps ph(v(6)) ph(v(1))
+echo acph_FIG
 
 ***********************************************
 
