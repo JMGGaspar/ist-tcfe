@@ -60,7 +60,7 @@ echo  "Transient analysis"
 echo "********************************************"
 tran 1e-5 10e-3
 
-hardcopy trans.ps v(coll) v(base)
+hardcopy trans.ps v(coll) v(base) v(1)
 echo trans_FIG
 
 echo "********************************************"
