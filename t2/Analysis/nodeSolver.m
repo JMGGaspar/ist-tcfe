@@ -4,27 +4,27 @@ format long
 pkg load symbolic
 
 
-%data  = [R1,R2,R3,R4,R5,R6,R7,Va,Id,Kb,Kc]
+data  = [R1,R2,R3,R4,R5,R6,R7,Va,Id,Kb,Kc]
 
 for i= 1:7
   Data(i) = 1/Data(i);
 endfor
 
-G1 = Data(1)
-G2 = Data(2)
-G3 = Data(3)
-G4 = Data(4)
-G5 = Data(5)
-G6 = Data(6)
-G7 = Data(7)
-Va = Data(8)
-Id = Data(9)
-Kb = Data(10)
-Kc = Data(11)
-I = 1;
-O = 0;
+##G1 = Data(1)
+##G2 = Data(2)
+##G3 = Data(3)
+##G4 = Data(4)
+##G5 = Data(5)
+##G6 = Data(6)
+##G7 = Data(7)
+##Va = Data(8)
+##Id = Data(9)
+##Kb = Data(10)
+##Kc = Data(11)
+##I = 1;
+##O = 0;
 
-%{
+
 syms G1
 syms G2
 syms G3
@@ -38,7 +38,7 @@ syms Kb
 syms Kc
 I = vpa (1.0)
 O = vpa (0.0)
-%}
+
 
 
 
