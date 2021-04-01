@@ -1,0 +1,32 @@
+*
+* NGSPICE simulation script
+* BJT amp with feedback
+*
+
+* forces current values to be saved
+.options savecurrents
+
+
+*******************************************
+.include ../Analysis/sim_1.cir
+*******************************************
+
+
+.control
+
+
+echo "********************************************"
+echo  "Operating point"
+echo "********************************************"
+
+op
+
+echo  "op_TAB"
+print all
+echo  "op_END"
+
+
+quit
+.endc
+
+.end

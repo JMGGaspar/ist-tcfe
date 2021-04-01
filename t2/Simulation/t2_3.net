@@ -1,0 +1,37 @@
+*
+* NGSPICE simulation script
+* BJT amp with feedback
+*
+
+* forces current values to be saved
+.options savecurrents
+
+
+*******************************************
+.include ../Analysis/sim_3.cir
+*******************************************
+
+.control
+
+set hcopypscolor=0
+set color0 = rgb:f/f/f   ;background, a nice color of white
+set color1 = rgb:/1/1/1  ;text and grid almost black
+set color2 = blue   ;vector0
+set color3 = red   ;vector1
+set color4 = green   ;vector2
+
+echo "********************************************"
+echo  "Transient Analysis"
+echo "********************************************"
+
+
+tran 0.01m 20m
+
+hardcopy trans_nat.ps v(6)
+echo trans_nat_FIG
+
+
+quit
+.endc
+
+.end
