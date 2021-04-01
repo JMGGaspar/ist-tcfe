@@ -6,8 +6,8 @@ pkg load symbolic
 
 %data  = [R1,R2,R3,R4,R5,R6,R7,Va,Id,Kb,Kc]
 
-% converter os valores de R, em valores de G, por conveniencia nas op. matriciais
- %{
+% converter os valores de R em valores de G, por conveniencia nas op. matriciais
+%{
 for i= 1:7
   Data(i) = 1/Data(i);
 endfor
@@ -45,15 +45,15 @@ O = 0;
 
 
 % matriz com as eq. da lei dos nós 
-%    V1   V2           V3   V4/0   V5          V6    V7       V8
-A = [-G1, G1+G2+G3   , G2 , O    , -G3       , O   , O      , O   ;... %nó 2
-     O  , Kb-G2      , G2 , O    , Kb        , O   , O      , O   ;... %nó 3
-     O  , Kb         , O  , O    , -Kb-G5    , G5  , O      , O   ;... %nó 6
-     O  , O          , O  , -G6  , O         , O   , G6+G7  , -G7 ;... %nó 7
-     O  , G3         , O  , O    , O         , O   , O      , O   ;... %ground 
-     I  , O          , O  , -I   , O         , O   , O      , O   ;... %f. tensão linear
-     O  , O          , O  , O    , I         , O   , O      , -I  ;... %f. tensão dependente
-     O  , G3         , O  , O    , G3+G4+G5  , -G5 , -G7    , G7  ]    %super-nó
+%    V1    V2         V3      V4/GR  V5          V6      V7       V8
+A = [-G1 , G1+G2+G3 , -G2   , O    , -G3       , O     , O      , O   ;... %nó 2
+     O   , Kb-G2    , G2+Kb , O    , O         , -Kb   , O      , O   ;... %nó 3
+     O   , O        , -Kb   , O    , -G5       , G5+Kb , O      , O   ;... %nó 6
+     O   , O        , O     , -G6  , O         , O     , G6+G7  , -G7 ;... %nó 7
+     O   , O        , O     , I    , O         , O     , O      , O   ;... %ground 
+     I   , O        , O     , -I   , O         , O     , O      , O   ;... %f. tensão linear
+     O   , O        , O     , O    , I         , O     , O      , -I  ;... %f. tensão dependente
+     O   , -G3      , O     , -G4  , G3+G4+G5  , -G5   , -G7    , G7  ]    %super-nó
      
 B = [O; O; O; O; O; Va; Kd*Id; O]
 
