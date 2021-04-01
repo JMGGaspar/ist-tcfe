@@ -7,41 +7,9 @@
 .options savecurrents
 
 
-
-
-
 *******************************************
-* supply voltage
-Vc 1 0 5.00894173155
-
-* Capacitor
-C 8 6 1.03365328826e-6
-
-
-R1 1 2 1.02806435778e3
-
-R2 3 2 2.0319770372e3
-
-R3 2 5 3.0063814709e3
-
-R4 5 0 4.18397333097e3
-
-R5 6 5 3.11993742552e3
-
-* the node 4 is directly connected to node 0, but for the Hvs we need a probe in between
-R6 4 7 2.08858744661e3
-
-R7 7 8 1.0004498667e3
-
-* Dependent current source
-Gcs 6 3 2 5 7.06316528745e-3
-
-* Dependent voltage source
-*there is a voltage source here, with the purpose of probing, for the Hvs1
-
-Vprobe 0 4 0
-Hvs 5 8 Vprobe 8.11924814489e3
-
+.include ../Analysis/sim_1.cir
+*******************************************
 
 
 .control

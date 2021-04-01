@@ -1,0 +1,32 @@
+
+Circuit: *
+
+********************************************
+Transient Analysis
+********************************************
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+1                                            0
+6                                      5.47475
+8                                     -2.97092
+2                                      5.65517
+3                                      17.3851
+5                                      4.83786
+4                                            0
+7                                     -2.00872
+hvs#branch                        -0.000679016
+vprobe#branch                      0.000961761
+vc#branch                           0.00550079
+
+
+No. of Data Rows : 2008
+
+The file "trans_nat.ps" may be printed on a postscript printer.
+trans_nat_FIG
+ngspice-31 done
