@@ -12,15 +12,15 @@ R5 = Data(5);
 R6 = Data(6);
 R7 = Data(7);
 Va = Data(8);
-Id = Data(9);
+Id = 0;
 Kb = Data(10); 
 Kc = Data(11);
 I = 1;
 O = 0;
 
 %these are Os intead of zeros on purpose (the same for Is instead of ones)
-A = [R1+R3+R4 R3 R4 O; Kb*(R3) Kb*(R3)-I O O; R4 O R4+R6+R7-Kc O ; O O O I]
-B = [Va; O; O; Id]
+A = [R1+R3+R4 R3 R4 O; Kb*(R3) Kb*(R3)-I O O; R4 O R4+R6+R7-Kc O ; O O O I];
+B = [Va; O; O; Id];
 
 I = A\B
 end

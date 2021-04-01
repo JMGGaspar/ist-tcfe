@@ -2,7 +2,7 @@ function V = Solver(Data)
 format long
 
 %Open the data
-fileID = fopen('Data96375.txt','r');
+fileID = fopen('Data.txt','r');
 Data = fscanf(fileID,'%f')
 fclose(fileID);
 
@@ -50,7 +50,7 @@ for i = 1:4
   Ampere = '%s%s & %f %s \n';
   fprintf(FileA, Ampere, Ii(i,1), Ii(i,2), I(i), Ending)
 endfor
-%output on mAmpere
+%output on Ampere
 fclose(FileA);
 
 %curent by branch
