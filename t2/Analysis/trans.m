@@ -26,6 +26,7 @@ grid on
 legend('Vx','V6','V8','Location','northeast')
 xlabel ("t[ms]");
 ylabel ("V[V]");
+title ('Natural Response')
 print (hn, "Natural", "-depsc");
  
 %forced response
@@ -49,6 +50,7 @@ grid on
 legend('Vx','V6','Vs','Location','northeast')
 xlabel ("t[ms]");
 ylabel ("V[V]");
+title ('Forced Response')
 print (hf, "Forced", "-depsc");
 
 
@@ -74,6 +76,7 @@ grid on
 legend('Vx','V6','Vs','Location','northeast')
 xlabel ("t[ms]");
 ylabel ("V[V]");
+title ('Final Response')
 print (h, 'Final response', '-depsc');
 
 
