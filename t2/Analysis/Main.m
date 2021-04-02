@@ -20,7 +20,7 @@ V = Solver(Data);
 WriteSim(Data,V);
 
 %Calculate the R_eq and the time constant
-%função para isso
+Solver_t2_2(Data,V)
 
 %tran analysis (both nat and forced)
 start = 0    %t=0s
