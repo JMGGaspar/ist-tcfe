@@ -3,7 +3,8 @@ function I = meshSolver(Data)
 format long
 
 
-%data  = [R1,R2,R3,R4,R5,R6,R7,Va,Id,Kb,Kc]
+%data  = [R1,R2,R3,R4,R5,R6,R7,Va,C,Kb,Kc]
+
 R1 = Data(1);
 R2 = Data(2);
 R3 = Data(3);
@@ -22,5 +23,5 @@ O = 0;
 A = [R1+R3+R4 R3 R4 O; Kb*(R3) Kb*(R3)-I O O; R4 O R4+R6+R7-Kc O ; O O O I];
 B = [Va; O; O; Id];
 
-I = A\B
+I = A\B;
 end

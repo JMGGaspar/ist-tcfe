@@ -4,7 +4,7 @@ format long
 pkg load symbolic
 
 
-%data  = [R1,R2,R3,R4,R5,R6,R7,Va,Id,Kb,Kc]
+%data  = [R1,R2,R3,R4,R5,R6,R7,Va,C,Kb,Kc]
 
 % converter os valores de R em valores de G, por conveniencia nas op. matriciais
 %{

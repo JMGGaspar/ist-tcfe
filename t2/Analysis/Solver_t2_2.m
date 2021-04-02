@@ -1,4 +1,4 @@
-function tau = Solver(Data, V)
+function [Req, tau] = Solver_t2_2(Data, V)
 format long
 
 %Get the results from solvers
@@ -22,6 +22,8 @@ IBranch(6) = I_2(1)+I_2(3);
 IBranch(7) = I_2(4)-I_2(2);
 IBranch(8) = I_2(3);
 IBranch(9) = I_2(3);
+
+
 
 %voltage
 FileV = fopen('Voltages_2.tex','w');
@@ -52,7 +54,13 @@ endfor
 %output on mAmpere
 fclose(FileC);
 
-% fazer output tau 
-% fazer output R_eq (Vx/Ix)
+
+%calculate Req
+Req = abs((V_2(6)-V_2(8))/I_2(4));
+
+%calculate time constant
+
+tau = Req*Data(9)*power(10,-6); %Reminder: data  = [R1,R2,R3,R4,R5,R6,R7,Va,C,Kb,Kc]
+
 
 end

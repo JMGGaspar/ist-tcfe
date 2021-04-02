@@ -3,7 +3,8 @@ function I = meshSolver_t2_2(Data,V)
 format long
 
 
-%data  = [R1,R2,R3,R4,R5,R6,R7,Va,Id,Kb,Kc]
+%data  = [R1,R2,R3,R4,R5,R6,R7,Va,C,Kb,Kc]
+
 R1 = Data(1);
 R2 = Data(2);
 R3 = Data(3);
@@ -26,10 +27,10 @@ O = 0;
 A = [R1+R3+R4 -R3        R4          O   ;... %mesh A
      -(Kb*R3) (-I+Kb*R3) O           O   ;... %mesh B
      -R4      O          R4+R6+R7+Kd O   ;... %mesh C
-     O        R5         -Kd         -R5 ]    %mesh D
+     O        R5         -Kd         -R5 ];    %mesh D
      
 B = [O;       O;         O;          Vx  ];
 
-I = A\B
+I = A\B;
 
 end

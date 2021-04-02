@@ -3,8 +3,7 @@ function V = nodeSolver_t2_2(Data, V)
 format long
 pkg load symbolic
 
-
-##data  = [R1,R2,R3,R4,R5,R6,R7,Va,Id,Kb,Kc]
+%data  = [R1,R2,R3,R4,R5,R6,R7,Va,C,Kb,Kc]
 
 for i= 1:7
   Data(i) = 1/Data(i);
