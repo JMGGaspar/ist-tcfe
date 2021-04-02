@@ -19,14 +19,15 @@ I = 1;
 O = 0;
 
 %these are Os instead of zeros on purpose (the same for Is instead of ones)
-%Ic and Id refer to the mesh convention, not necessarily to the exercise figure
+%Ic and Id refer to our mesh convention, not necessarily to the exercise's figure
 
-A = [R1+R3+R4 R3        R4          O;...
-     Kb*(R3)  Kb*(R3)-I O           O;...
-     R4       O         R4+R6+R7-Kd O;...
-     O        O         O           I];
+%    Ia       Ib        Ic          Id
+A = [R1+R3+R4 R3        R4          O ;... %mesh A
+     Kb*(R3)  Kb*(R3)-I O           O ;... %mesh B
+     R4       O         R4+R6+R7-Kd O ;... %mesh C
+     O        O         O           I ];   %mesh D
      
-B = [Va; O; O; Id];
+B = [Va;      O;        O;          Id];
 
 I = A\B
 
