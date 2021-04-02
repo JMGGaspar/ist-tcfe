@@ -26,7 +26,7 @@ O = 0;
 A = [R1+R3+R4 -R3        R4          O   ;... %mesh A
      -(Kb*R3) (-I+Kb*R3) O           O   ;... %mesh B
      -R4      O          R4+R6+R7+Kd O   ;... %mesh C
-     O        R5         -Kd         -R5 ];    %mesh D
+     O        R5         -Kd         -R5 ]    %mesh D
      
 B = [O;       O;         O;          Vx  ];
 
