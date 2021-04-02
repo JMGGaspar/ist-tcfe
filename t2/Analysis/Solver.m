@@ -16,12 +16,6 @@ Ii = ['Ia'; 'Ib'; 'Ic'; 'Id'];
 Ij = ['Ib'; 'Id'; 'R1'; 'R2'; 'R3'; 'R4'; 'R5'; 'R6'; 'R7'];
 Ending = '\\ \hline';
 
-
-%convert A to mA
-%for i=1:4
-%  I(i)= I(i)*1000;
-%endfor
-
 %Get the currents on each branch
 %the order is tha same as Ij
 IBranch(1) = I(2);

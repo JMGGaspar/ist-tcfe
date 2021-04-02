@@ -19,5 +19,13 @@ V = Solver(Data);
 %create the circuits for the ngspice
 WriteSim(Data,V);
 
+%Calculate the R_eq and the time constant
+%função para isso
 
+%tran analysis (both nat and forced)
+%função para isso
 
+%freq analysis
+%função para isso
+
+%gg
