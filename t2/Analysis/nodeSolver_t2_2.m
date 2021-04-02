@@ -1,4 +1,4 @@
-function V = nodeSolver_ts_2(Data, V)
+function V = nodeSolver_t2_2(Data, V)
 
 format long
 pkg load symbolic
@@ -10,18 +10,18 @@ for i= 1:7
   Data(i) = 1/Data(i);
 endfor
 
-G1 = Data(1)
-G2 = Data(2)
-G3 = Data(3)
-G4 = Data(4)
-G5 = Data(5)
-G6 = Data(6)
-G7 = Data(7)
-Va = Data(8)
+G1 = Data(1);
+G2 = Data(2);
+G3 = Data(3);
+G4 = Data(4);
+G5 = Data(5);
+G6 = Data(6);
+G7 = Data(7);
+Va = Data(8);
 Id = 0;
-Kb = Data(10)
-Kd = Data(11)
-Vx = V(6)-V(8)
+Kb = Data(10);
+Kd = Data(11);
+Vx = V(6)-V(8);
 I = 1;
 O = 0;
 
@@ -54,5 +54,5 @@ A = [G1 (-G1-G2-G3) G2  O         G3 O O      O ;... %nó 2
 
 B = [O; O; O; O; O; Vx; O; O];
 
-V = A\B
+V = A\B;
 end
