@@ -43,7 +43,7 @@ Sim2 = fopen('sim_2.cir','w');
 
 fprintf(Sim2, ".OP \n")
 
-fprintf(Sim2, "Vc 1 0 %f \n", Va)
+fprintf(Sim2, "Vc 1 0 0 \n")
 fprintf(Sim2, "V 6 8 %f \n", (V(6)-V(8)))
 
 fprintf(Sim2, "R1 1 2 %f \n", R1)
