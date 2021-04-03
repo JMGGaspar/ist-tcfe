@@ -36,6 +36,5 @@ trans (Data, V, Req, tau, start, stop, freq);
 %freq analysis
 fstart = -1
 fstop = 6
-freqResponce (Data, fstart, fstop);
-%freqResponcev2 (Data, fstart, fstop)
+freqResponcev2 (Data, fstart, fstop)
 %gg
