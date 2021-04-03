@@ -1,6 +1,3 @@
-clearvars
-clear all
-format long
 
 %Open the data
 fileID = fopen('Data.txt','r');

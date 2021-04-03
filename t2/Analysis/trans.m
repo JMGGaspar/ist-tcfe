@@ -62,6 +62,10 @@ V8 = V8n + V8f;
 Vx = V6 - V8;
 O = 0;
 
+%trolhice para contar com os -5ms
+tt = (-stop/4):deltaT:start;
+Vxt = V(6) - V(8);
+
 h = figure ();
 
 plot (t*1000, Vx, "r");
@@ -69,6 +73,16 @@ hold on;
 plot (t*1000, V6, "g");
 hold on;
 plot (t*1000, Vs, "b");
+hold on;
+%start trolhice
+plot (tt*1000, Vxt, "r");
+hold on;
+plot (tt*1000, V(6), "g");
+hold on;
+plot (tt*1000, Data(8), "b");
+hold on;
+plot (tt*1000, O,'k');
+%end trolhice
 hold on;
 plot (t*1000, O, 'k');
 
