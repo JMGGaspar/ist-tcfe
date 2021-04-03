@@ -1,3 +1,5 @@
+clearvars
+clear all
 format long
 
 %Open the data
@@ -23,6 +25,8 @@ WriteSim(Data,V);
 [Req, tau] = Solver_t2_2(Data,V);
 
 %tran analysis (both nat and forced)
+Data(9)= Data(9)*1e-6 %convert to farad
+
 start = 0;    %t=0s
 stop = 20e-3; %t=20ms
 freq = 1000; %Hz
@@ -30,6 +34,8 @@ freq = 1000; %Hz
 trans (Data, V, Req, tau, start, stop, freq);
 
 %freq analysis
-%função para isso
-
+fstart = -1
+fstop = 6
+freqResponce (Data, fstart, fstop);
+%freqResponcev2 (Data, fstart, fstop)
 %gg

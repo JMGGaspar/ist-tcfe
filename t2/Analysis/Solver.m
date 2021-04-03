@@ -50,6 +50,6 @@ for i = 1:9
   fprintf(FileC, Ampere, Ij(i,1), Ij(i,2), IBranch(i), Ending)
 endfor
 %output on mAmpere
-fclose(FileA);
+fclose(FileC);
 
 end
