@@ -33,21 +33,26 @@ print (hn, "Natural", "-depsc");
 % (Vc/Vs)=1/(sqrt(1+w²*Req²*C²)) aka gain
 % Phi= atan(w*Req*C) aka phase
 
-[Vph, Vm] = nodeSolverPhasor(Data, w);
+[Vph, Vm, Vc] = nodeSolverPhasor(Data, w);
+
+
+Vcm = abs(Vc);
+Vcph = arg(Vc);
+
 
 Vs = 1*sin(w*t);
 V6f = Vm(6)*sin(w*t+Vph(6));
 V8f = Vm(8)*sin(w*t+Vph(8));
-Vxf = V6f - V8f;
+Vcf = Vcm*sin(w*t+Vcph);
 
 hf = figure ();
-plot (t*1000, Vxf, "r");
+plot (t*1000, Vcf, "r");
 hold on;
 plot (t*1000, V6f, "g");
 hold on;
 plot (t*1000, Vs, "b");
 grid on
-legend('Vx','V6','Vs','Location','northeast')
+legend('Vc','V6','Vs','Location','northeast')
 xlabel ("t[ms]");
 ylabel ("V[V]");
 title ('Forced Response')

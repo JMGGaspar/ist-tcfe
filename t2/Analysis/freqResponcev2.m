@@ -1,4 +1,4 @@
-function freqResponcev2 (Data, fstart, fstop)
+function freqResponcev2 (Data, fstart, fstop, Req)
   
 format long
 f = logspace(fstart, fstop, 100);
@@ -21,7 +21,6 @@ Kb = Data(10);
 Kd = Data(11);
 I = 1;
 O = 0;
-
 
 
 for i=1:length(f)
@@ -98,15 +97,25 @@ semilogx (f, Vcph, "g");
 hold on;
 x = xlim; % current x-axis limits
 plot([x(1) x(2)],[-90 -90])
+plot([x(1) x(2)],[-45 -45])
 hold on;
 y = ylim; % current y-axis limits
 plot([1000 1000],[y(1) y(2)])
 grid on
-legend('ph(V6)','ph(Vs)','ph(Vc)', '-90º', '1kHz','Location','southwest')
+legend('ph(V6)','ph(Vs)','ph(Vc)', '-90', '-45', '1kHz','Location','southwest')
 xlabel ("f[Hz]");
 ylabel ("Phase[degrees]");
 title ('Phase plot')
 print (hph, "Phase", "-depsc");
+
+
+
+%print the cut off frequency
+f = 1/(2*pi*Req*C)
+
+FileF = fopen('Cutoff.tex','w');
+printf(FileF, '%.2f',f)
+f4close(FileF);
 
 endfunction
 

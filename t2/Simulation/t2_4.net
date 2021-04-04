@@ -33,7 +33,7 @@ echo "********************************************"
 
 tran 0.01m 20m
 
-hardcopy trans_forc.ps v(1) v(6)
+hardcopy trans_forc.ps v(1) v(6) {v(6)-v(8)}
 echo trans_forc_FIG
 mak
 
@@ -44,13 +44,13 @@ echo "********************************************"
 
 ac dec 1000 0.1 100MEG
 
-hardcopy acm.ps v(6) v(1)
+hardcopy acm.ps v(6) v(1) {v(6)-v(8)}
 echo acm_FIG
 
-hardcopy acm_db.ps db(v(6)) db(v(1))
+hardcopy acm_db.ps db(v(6)) db(v(1)) db({v(6)-v(8)})
 echo acm_db_FIG
 
-hardcopy acph.ps {-90} {ph(v(6))*180/pi} {ph(v(1))*180/pi} 
+hardcopy acph.ps {-90} {ph(v(6))*180/pi} {ph(v(1))*180/pi}
 echo acph_FIG
 
 ***********************************************

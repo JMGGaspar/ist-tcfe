@@ -1,4 +1,4 @@
-function [Vph, Vm] = nodeSolverPhasor(Data, w)
+function [Vph, Vm, Vc] = nodeSolverPhasor(Data, w)
   
 format long
 
@@ -22,7 +22,8 @@ Kd = Data(11);
 I = 1;
 O = 0;
 
-Zc = 1/(i*w*C);
+
+Zc = 1/(j*w*C);
 Yc = 1/Zc;
 
 A = [G1 (-G1-G2-G3) G2  O      G3       O      O     O;...
@@ -37,6 +38,8 @@ A = [G1 (-G1-G2-G3) G2  O      G3       O      O     O;...
 B = [O; O; O; O; O; Va; O; O];
 
 V = A\B;
+
+Vc = V(6)-V(8);
 
 for i = 1:length(V)
   Vm(i) = abs(V(i));
