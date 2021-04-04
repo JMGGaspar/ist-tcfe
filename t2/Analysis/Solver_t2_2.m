@@ -1,4 +1,4 @@
-function [Req, tau] = Solver_t2_2(Data, V)
+function [Req, tau, V_2] = Solver_t2_2(Data, V)
 format long
 
 %Get the results from solvers

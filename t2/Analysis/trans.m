@@ -1,4 +1,4 @@
-function trans (Data, V, Req, tau, start, stop, freq)
+function trans (Data, V, V_2, Req, tau, start, stop, freq)
 format long
  
 deltaT = (stop-start)/1000;
@@ -12,8 +12,8 @@ w = 2*pi*freq;
 %v(6)
 % V(t)= V(inf) + [V(0)-V(inf)]*exp(-t/tau)
   
-V6n =V(6)*exp(-t/tau);
-V8n =V(8)*exp(-t/tau); 
+V6n =V_2(6)*exp(-t/tau);
+V8n =V_2(8)*exp(-t/tau); 
 Vxn = V6n - V8n;
  
 hn = figure ();

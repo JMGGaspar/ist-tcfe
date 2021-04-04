@@ -73,11 +73,13 @@ endfor
 %make the plots
 
 hm = figure ();
+
 semilogx (f, V6m, "r");
 hold on;
 semilogx (f, Vsm, "b");
 hold on;
 semilogx (f, Vcm, "g");
+ylim([-30 10])
 grid on
 legend('V6','Vs', 'Vc','Location','southwest')
 xlabel ("f[Hz]");
