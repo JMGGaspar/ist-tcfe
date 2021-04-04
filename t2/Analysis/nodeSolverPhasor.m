@@ -48,14 +48,23 @@ endfor
 Vi = ['V1'; 'V2'; 'V3'; 'V4'; 'V5'; 'V6'; 'V7'; 'V8'];
 Ending = '\\ \hline';
 
-%voltage
-FileV = fopen('Voltages_4.tex','w');
+%voltage magnitude
+FileM = fopen('Voltages_M.tex','w');
 for i = 1:8
   Volt = '%s%s & %f %s \n';
-  fprintf(FileV, Volt, Vi(i,1), Vi(i,2), Vm(i), Ending)
+  fprintf(FileM, Volt, Vi(i,1), Vi(i,2), Vm(i), Ending)
 endfor
 %output on volts
-fclose(FileV);
+fclose(FileM);
+
+%voltage magnitude
+FilePh = fopen('Voltages_Ph.tex','w');
+for i = 1:8
+  Volt = '%s%s & %f %s \n';
+  fprintf(FilePh, Volt, Vi(i,1), Vi(i,2), Vph(i), Ending)
+endfor
+%output on volts
+fclose(FilePh);
   
   
   

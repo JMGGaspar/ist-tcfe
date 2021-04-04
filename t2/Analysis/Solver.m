@@ -8,7 +8,7 @@ V = nodeSolver(Data);
 %define the names for the variables
 Vi = ['V1'; 'V2'; 'V3'; 'V4'; 'V5'; 'V6'; 'V7'; 'V8'];
 Ii = ['Ia'; 'Ib'; 'Ic'; 'Id'];
-Ij = ['Id'; 'Ib'; 'R1'; 'R2'; 'R3'; 'R4'; 'R5'; 'R6'; 'R7'];
+Ij = ['C'; 'Ib'; 'R1'; 'R2'; 'R3'; 'R4'; 'R5'; 'R6'; 'R7'];
 Ending = '\\ \hline';
 
 %Get the currents on each branch
@@ -17,9 +17,9 @@ IBranch(1) = I(4);
 IBranch(2) = I(2);
 IBranch(3) = I(1);
 IBranch(4) = I(2);
-IBranch(5) = I(1)+I(2);
-IBranch(6) = I(1)+I(3);
-IBranch(7) = I(4)-I(2);
+IBranch(5) = I(1)-I(2);
+IBranch(6) = -I(1)+I(3);
+IBranch(7) = -I(4)+I(2);
 IBranch(8) = I(3);
 IBranch(9) = I(3);
 

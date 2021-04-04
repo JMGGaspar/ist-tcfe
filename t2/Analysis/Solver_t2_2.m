@@ -9,6 +9,7 @@ V_2 = nodeSolver_t2_2(Data,V);
 Vi = ['V1'; 'V2'; 'V3'; 'V4'; 'V5'; 'V6'; 'V7'; 'V8'];
 Ii = ['Ia'; 'Ib'; 'Ic'; 'Id'];
 Ij = ['C'; 'Ib' ; 'R1'; 'R2'; 'R3'; 'R4'; 'R5'; 'R6'; 'R7'];
+Ri = ['$R_eq$'; '$\tau$']
 Ending = '\\ \hline';
 
 %Get the currents on each branch
@@ -61,6 +62,18 @@ Req = abs((V_2(6)-V_2(8))/I_2(4));
 %calculate time constant
 
 tau = Req*Data(9)*power(10,-6); %Reminder: data  = [R1,R2,R3,R4,R5,R6,R7,Va,C,Kb,Kc]
+
+%Write a tex with theses values
+FileR = fopen('Req-tau.tex','w');
+Res = '%s & %.10f %s \n';
+
+fprintf(FileR, Res, Ri(1,:), Req, Ending);
+fprintf(FileR, Res, Ri(2,:), tau, Ending);
+
+fclose(FileR);
+
+
+
 
 
 end
