@@ -51,7 +51,7 @@ Ending = '\\ \hline';
 %voltage magnitude
 FileM = fopen('Voltages_M.tex','w');
 for i = 1:8
-  Volt = '%s%s & %f %s \n';
+  Volt = '%s%s & %.10f %s \n';
   fprintf(FileM, Volt, Vi(i,1), Vi(i,2), Vm(i), Ending)
 endfor
 %output on volts
@@ -60,8 +60,8 @@ fclose(FileM);
 %voltage magnitude
 FilePh = fopen('Voltages_Ph.tex','w');
 for i = 1:8
-  Volt = '%s%s & %f %s \n';
-  fprintf(FilePh, Volt, Vi(i,1), Vi(i,2), Vph(i), Ending)
+  Volt = '%s%s & %.10f %s \n';
+  fprintf(FilePh, Volt, Vi(i,1), Vi(i,2), (Vph(i)*180/pi), Ending)
 endfor
 %output on volts
 fclose(FilePh);
