@@ -96,7 +96,7 @@ legend('Vx','V6','Vs','Location','northeast')
 xlabel ("t[ms]");
 ylabel ("V[V]");
 title ('Final Response')
-print (h, 'Final response', '-depsc');
+print (h, 'FinalResponse', '-depsc');
 
 
 endfunction

@@ -114,8 +114,8 @@ print (hph, "Phase", "-depsc");
 f = 1/(2*pi*Req*C)
 
 FileF = fopen('Cutoff.tex','w');
-printf(FileF, '%.2f',f)
-f4close(FileF);
+fprintf(FileF, '%.2f',f)
+fclose(FileF);
 
 endfunction
 

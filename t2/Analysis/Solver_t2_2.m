@@ -9,7 +9,7 @@ V_2 = nodeSolver_t2_2(Data,V);
 Vi = ['V1'; 'V2'; 'V3'; 'V4'; 'V5'; 'V6'; 'V7'; 'V8'];
 Ii = ['Ia'; 'Ib'; 'Ic'; 'Id'];
 Ij = ['C'; 'Ib' ; 'R1'; 'R2'; 'R3'; 'R4'; 'R5'; 'R6'; 'R7'];
-Ri = ['$R_eq$'; '$\tau$']
+Ri = ['$R_{eq}$'; '$\tau$']
 Ending = '\\ \hline';
 
 %Get the currents on each branch

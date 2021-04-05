@@ -23,6 +23,7 @@
 \usepackage{float}
 \usepackage{mathtools}
 \usepackage{hyperref}
+\usepackage{comment}
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -37,11 +38,11 @@
 %Header
 \pagestyle{fancy}{
 \fancyhf{}
-\rhead{\includegraphics[width=30mm]{Images/IST_A_CMYK_POS.pdf}}
-\lhead{Group 67}
+\rhead{\includegraphics[width=30mm]{../../figlib/IST_A_CMYK_POS.pdf}}
+\lhead{Grupo 67}
 
 %footer
-\lfoot{Lisbon, March 22, 2021}
+\lfoot{Lisbon, April 5, 2021}
 \rfoot{Page \thepage}
 }
 
@@ -50,10 +51,9 @@
 %     Begin Document                                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \begin{document}
 
-\setcounter{page}{0}
+
 
 % Set roman numbering (i,ii,...) before the start of chapters
 %\pagenumbering{roman}
@@ -63,6 +63,7 @@
 % ----------------------------------------------------------------------
 \input{frontcover}
 \pagestyle{fancy}
+
 
 % ----------------------------------------------------------------------
 % Dedication page (optional)
@@ -112,6 +113,7 @@
 % ----------------------------------------------------------------------
 
 \pagebreak
+\setcounter{page}{1}
 \input{intro}
 
 \pagebreak
@@ -121,6 +123,7 @@
 \input{simulation}
 
 \pagebreak
+\input{comparison}
 \input{conclusion}
 %\cleardoublepage
 

@@ -27,7 +27,7 @@ echo "********************************************"
 
 tran 0.01m 20m
 
-hardcopy trans_nat.ps v(6)
+hardcopy trans_nat.ps v(6) v(8) {V(6)- v(8)}
 echo trans_nat_FIG
 
 
