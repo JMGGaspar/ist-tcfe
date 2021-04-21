@@ -1,0 +1,61 @@
+
+*NGSPICE simulation script
+* BJT amp with feedback
+*
+
+* forces current values to be saved
+.options savecurrents
+
+*******************************************
+.param pi = 3.14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196442881097566593344612847564823
+
+*we could go for 10 digits but..........
+*go big or go home
+
+
+*******************************************
+.include ../Analysis/sim_4.cir
+*******************************************
+
+.control
+
+set hcopypscolor=0
+set color0 = rgb:f/f/f   ;background, a nice color of white
+set color1 = rgb:/1/1/1  ;text and grid almost black
+set color2 = blue   ;vector0
+set color3 = red   ;vector1
+set color4 = green   ;vector2
+
+echo "********************************************"
+echo  "Transient Analysis"
+echo "********************************************"
+
+
+tran 0.01m 20m
+
+hardcopy trans_forc.ps v(1) v(6) {v(6)-v(8)}
+echo trans_forc_FIG
+mak
+
+
+echo "********************************************"
+echo  "Frequency analysis"
+echo "********************************************"
+
+ac dec 1000 0.1 100MEG
+
+hardcopy acm.ps v(6) v(1) {v(6)-v(8)}
+echo acm_FIG
+
+hardcopy acm_db.ps db(v(6)) db(v(1)) db({v(6)-v(8)})
+echo acm_db_FIG
+
+hardcopy acph.ps {-90} {ph(v(6))*180/pi} {ph(v(1))*180/pi} {ph(v(6)-v(8))*180/pi}
+echo acph_FIG
+
+***********************************************
+
+quit
+.endc
+
+.end
