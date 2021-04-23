@@ -12,19 +12,49 @@
 *we could go for 10 digits but..........
 *go big or go home
 
+.param n = {1/10}
+.param f = 50
+.param t = {1/f}
+.param dt = {t/100}
 
 *******************************************
 
-Vc 1 0 dc sin(0 12 80)
+Vs Ph 0 dc sin(0 230 50)
 
+F1 Ph 0 E1 n
 
-D1 1 3 Default
-D2 2 0 Default
-D3 0 3 Default
-D4 2 1 Default
+E1 vac vacref Ph 0 n
 
-C 2 3 10u
-R 2 3 10k
+DR1 vac    1      Default
+DR2 GND    vac    Default
+DR3 vacref 1      Default
+DR4 GND    vacref Default
+
+R1 1 GND 5k
+C1 1 GND 5u
+
+R2 1 2 3k
+
+D1 2 3 Default
+D2 3 4 Default
+D3 4 5 Default
+D4 5 6 Default
+D5 6 7 Default
+D6 7 8 Default
+D7 8 9 Default
+D8 9 10 Default
+D9 10 11 Default
+D10 11 12 Default
+D11 12 13 Default
+D12 13 14 Default
+D13 14 15 Default
+D14 15 16 Default
+D15 16 17 Default
+D16 17 18 Default
+D17 18 19 Default
+D18 19 GND Default
+*D19 20 21 Default
+*D20 21 GND Default
 
 
 .model Default D
@@ -32,6 +62,7 @@ R 2 3 10k
 *******************************************
 
 .control
+
 
 set hcopypscolor=0
 set color0 = rgb:f/f/f   ;background, a nice color of white
@@ -45,10 +76,20 @@ echo  "Transient Analysis"
 echo "********************************************"
 
 
-tran 0.5m 50m
+tran 0.0002 0.10 0.02
 
-hardcopy trans_forc.ps v(1) {v(3)-V(2)}
-echo trans_forc_FIG
+echo  "op_TAB"
+print {maximum(v(2))-minimum(v(2))}
+print mean(v(2))
+echo  "op_END"
+
+
+hardcopy Sim1.ps {v(vac)-v(vacref)} {v(1)} {v(2)} 12
+echo Sim1_FIG
+
+hardcopy Sim2.ps {v(2)-12} {mean(V(2))-12}
+echo Sim2_FIG
+
 
 
 quit
