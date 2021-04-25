@@ -1,23 +1,24 @@
+format long
 
-%Open the data
-fileID = fopen('Data.txt','r');
-Data = fscanf(fileID,'%f');
-fclose(fileID);
+%Define the constants
+f=50; %Hz (Pls dont change this one)
+A=230; %V
+n=10; %Windings in the transformer
+Periods= 5; %Number of periods 
+Von = 0.7; %V
+C1 = 5; %uF
+R1 = 5; %Kohm
+R2 = 3; %Kohm
+tau = C1*R1*10e3;
 
-%convert to ohm
-Data(11) = Data(11)*1e3;
-for i= 1:7
-  Data(i) = 1000*Data(i);
-endfor
-%convert to S
-Data(10)= Data(10)*1e-3;
-
-%OP analisis (return voltages)
-V = Solver(Data);
+plots(n,f,A,Periods, Von, tau)
 
 %create the circuits for the ngspice
-WriteSim(Data,V);
+MU = WriteSim (R1, R2, C1, n, A);
 
+
+
+%{
 %Calculate the R_eq and the time constant
 [Req, tau, V_2] = Solver_t2_2(Data,V);
 
@@ -35,3 +36,4 @@ fstart = -1
 fstop = 6
 freqResponcev2 (Data, fstart, fstop, Req)
 %gg
+%}
