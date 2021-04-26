@@ -11,7 +11,7 @@ R1 = 15; %Kohm
 R2 = 5.6; %Kohm
 tau = C1*R1*10e3;
 
-%plots(n,f,A,Periods, Von, tau)
+plots(n,f,A,Periods, Von, tau, R1, C1)
 
 %create the circuits for the ngspice
 MU = WriteSim (R1, R2, C1, n, A);
