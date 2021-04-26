@@ -10,9 +10,6 @@
 .include ../Analysis/Sim_t3.cir
 *******************************************
 
-
-
-
 .control
 
 
@@ -34,9 +31,19 @@ set deltat = 0.0001
 
 tran $deltat $tstop $tstart
 
+set Cost = Mu
+set ripple = {maximum(v(2))-minimum(v(2))}
+set mean = {abs(mean(v(2))- 12)}
+set denom = {$Cost*($mean+$ripple+1e-6)}
+let merit = {($denom)^(-1)}
+
+let Ripple = $ripple
+
 echo  "op_TAB"
-print {maximum(v(2))-minimum(v(2))}
-print mean(v(2))
+print Ripple
+print $mean
+print $Cost
+print merit
 echo  "op_END"
 
 

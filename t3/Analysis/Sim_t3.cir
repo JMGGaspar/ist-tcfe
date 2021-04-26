@@ -1,10 +1,11 @@
 .OP 
+.param n={1/10.000000} 
 **Voltage source ****************************************** 
 Vc Ph 0  dc sin(0 230.000000 50.000000) 
 
 **Transformer ****************************************** 
-F1 Ph 0  E1  0.100000 
-E1 vac vacref Ph 0 0.100000 
+F1 Ph 0  E1  n 
+E1 vac vacref Ph 0 n 
 
 ** Rectifier****************************************** 
 DR1 vac 1 Default 
@@ -13,9 +14,9 @@ DR3 vacref 1 Default
 DR4 GND vacref Default 
 
 **First regulation ************************************* 
-C1 1 GND 5.000000u 
-R1 1 GND 5.000000k 
-R2 1 2 3.000000k 
+C1 1 GND 15.000000u 
+R1 1 GND 15.000000k 
+R2 1 2 5.600000k 
 
 **Final regulation**************************************** 
 D1 2 3 Default 
@@ -37,6 +38,9 @@ D16 17 18 Default
 D17 18 19 Default 
 D18 19 GND Default 
 
+******************************************** 
 .model Default D 
+.csparam Mu=37.800000 
+
 ******************************************** 
 .END 

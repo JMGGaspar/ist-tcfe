@@ -6,12 +6,12 @@ A=230; %V
 n=10; %Windings in the transformer
 Periods= 5; %Number of periods 
 Von = 0.7; %V
-C1 = 5; %uF
-R1 = 5; %Kohm
-R2 = 3; %Kohm
+C1 = 15; %uF
+R1 = 15; %Kohm
+R2 = 5.6; %Kohm
 tau = C1*R1*10e3;
 
-plots(n,f,A,Periods, Von, tau)
+%plots(n,f,A,Periods, Von, tau)
 
 %create the circuits for the ngspice
 MU = WriteSim (R1, R2, C1, n, A);
