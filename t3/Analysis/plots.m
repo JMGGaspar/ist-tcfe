@@ -1,4 +1,4 @@
-function plots(n,f,Ain,Periods, Von, R, C)
+function plots(n, f, Ain, Periods, Von, R, C)
 
 format long
   
@@ -31,7 +31,7 @@ endfor
 %-----------------------------------------------------
 Venv = zeros(1, length(t));
 
-tOFF = T+T/3
+tOFF = T + Toff_solver(f, A, C, R, Von)
 
 vRipple = A*sin(w*tOFF)*exp(-(t-tOFF)/(R*C))-Von;
 
@@ -68,17 +68,13 @@ inst = i+(incr*(Periods-0.25));
   else
     Venv(inst) = vRipple(i+incr/4);
     
-    
 endif
 endfor
 
 
 %-----------------------------------------------------
 
-
 hn = figure ();
-plot (t*1000, vRipple, "r");
-hold on;
 plot (t*1000, Vac, "g");
 hold on;
 plot (t*1000, Venv, "b");
@@ -86,7 +82,7 @@ grid on
 legend('Vac', 'Venv','Location','southwest')
 xlabel ("t[ms]");
 ylabel ("V[V]");
-title ('Initial input')
+title ('AC/DC converter')
 print (hn, "Initial", "-depsc");
   
 endfunction
