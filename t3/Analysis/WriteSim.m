@@ -1,4 +1,4 @@
-function MU = WriteSim (R1, R2, C1, n, Va)
+function MU = WriteSim (R1, R2, C1, n, Va, nD)
 
 f= 50; %Hz;
 de = "Default";
@@ -7,7 +7,7 @@ k = "k";
 d = "D";
 m = 1/n;
 
-Dn = 18 %number of diodes
+Dn = nD %number of diodes
 MU=0
 
 %Sim1-------------------------------------------------------------------------------------------------------

@@ -5,16 +5,21 @@ f=50; %Hz (Pls dont change this one)
 A=230; %V
 n=10; %Windings in the transformer
 Periods= 5; %Number of periods 
-Von = 0.7; %V
-C1 = 15; %uF
-R1 = 15; %Kohm
-R2 = 5.6; %Kohm
-tau = C1*R1*10e3;
+C1 = 88; %uF
+R1 = 52; %Kohm
+R2 = 6.02; %Kohm
+%tau = C1*R1*10e3;
 
-plots(n,f,A,Periods, Von, tau, R1, C1)
+%Define the diode model parameters
+nD = 18 %(number of diods)
+Von = 0.7; %V
+Rd = 80 %Ohm
+
+
+plots(n, f, A, Periods, Von, R1, C1, R2, Rd, nD)
 
 %create the circuits for the ngspice
-MU = WriteSim (R1, R2, C1, n, A);
+MU = WriteSim (R1, R2, C1, n, A, nD);
 
 
 
