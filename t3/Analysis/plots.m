@@ -1,4 +1,4 @@
-function plots(n, f, Ain, Periods, Von, R1, C1, R2, Rd, nD)
+function [vRipple,avrError,Vmean] = plots(n, f, Ain, Periods, Von, R1, C1, R2, Rd, nD)
 
 format long
   
@@ -74,19 +74,22 @@ endif
 endfor
 
 %start trolhice
-Venv(length(Venv))=Venv(length(Venv)-1)
+Venv(length(Venv))=Venv(length(Venv)-1);
 %End trolhice
-%This  trolhice was to no fuck up the average, since the last value is 0
+%This  trolhice was to not fuck up the average, since the last value is 0
 
 %Define the voltage out
 Von_t = nD*Von;
 Rd_t = Rd*nD
+VenvDc = mean(Venv)
+%VenvDc = (R*2*Von)/(Rd) %obtained by nodal method on op model
+VenvIncr = Venv - VenvDc;
 
-Vout = Von_t + Venv*(Rd_t/(Rd_t+R2));
+Vout = Von_t + VenvIncr*(Rd_t/(Rd_t+R2));
 
-vRipple = max(Vout)-min(Vout)
-Vmean = mean(Vout)
-avrError =  abs(Vmean-12)
+vRipple = max(Vout)-min(Vout);
+Vmean = mean(Vout);
+avrError =  abs(Vmean-12);
 
 %-----------------------------------------------------
 

@@ -7,7 +7,33 @@
 .options savecurrents
 
 *******************************************
-.include ../Analysis/Sim_t3.cir
+
+**Voltage source ****************************************** 
+Vc 1 GND  dc sin(0 23 50) 
+
+
+R 1 2 1k
+**Final regulation**************************************** 
+D1 2 3 Default 
+D2 3 4 Default 
+D3 4 5 Default 
+D4 5 6 Default 
+D5 6 7 Default 
+D6 7 8 Default 
+D7 8 9 Default 
+D8 9 10 Default 
+D9 10 11 Default 
+D10 11 12 Default 
+D11 12 13 Default 
+D12 13 14 Default 
+D13 14 15 Default 
+D14 15 16 Default 
+D15 16 17 Default 
+D16 17 18 Default 
+D17 18 19 Default 
+D18 19 GND Default 
+
+
 *******************************************
 
 .control
@@ -24,33 +50,28 @@ echo "********************************************"
 echo  "Transient Analysis"
 echo "********************************************"
 
-
 set tstart = 0.02
 set tstop = 0.12
 set deltat = 0.0001
 
 tran $deltat $tstop $tstart
 
-set Cost = Mu
-set ripple = {maximum(v(2))-minimum(v(2))}
-set mean = {abs(mean(v(2))- 12)}
-set denom = {$Cost*($mean+$ripple+1e-6)}
-let merit = {($denom)^(-1)}
-let Ripple = $ripple
+set Vmax = maximum(v(2))
+set Imax = maximum(@R[i])
+set Rd = {$Vmax/($Imax*18)}
+set Von = $Vmax/18
 
 echo  "op_TAB"
-print Ripple
-print $mean
-print $Cost
-print merit
+print $Imax
+print $Vmax
+print $Rd
+print $Von
 echo  "op_END"
 
 
-hardcopy sim1.ps {v(vac)-v(vacref)} {v(1)} {v(2)} 12
+hardcopy sim1.ps {@R[i]*1000} {v(2)} v(1) {18*0.6} {18*0.65} {18*0.7}
 echo sim1_FIG
 
-hardcopy sim2.ps {v(2)-12} {mean(V(2))-12}
-echo sim2_FIG
 
 
 
