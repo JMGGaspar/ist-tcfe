@@ -34,7 +34,7 @@ Venv = zeros(1, length(t));
 
 tOFF = T + Toff_solver(f, A, C, R, 2*Von)
 
-vRipple = A*sin(w*tOFF)*exp(-(t-tOFF)/(R*C))-2*Von;
+vRipple = (A*sin(w*tOFF)-2*Von)*exp(-(t-tOFF)/(R*C));
 
 
 for i=1:(incr/4)
