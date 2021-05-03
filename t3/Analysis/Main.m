@@ -30,8 +30,9 @@ FileP = fopen('InputParameters.tex','w');
 nu = '\nu'
 omega = '\Omega'
 
-fprintf(FileP, '$Tranformer Windings & %f %s\n', n, Ending)
-fprintf(FileP, 'C1($%s F$) & %f %s\n',nu,C1, Ending)
+fprintf(FileP, 'Tranformer Windings & %f %s\n', n, Ending)
+fprintf(FileP, 'Number of Diodes & %f %s\n', nD, Ending)
+fprintf(FileP, 'C1($%s F$) & %f %s\n',nu, C1, Ending)
 fprintf(FileP, 'R1($K%s$)& %f %s\n', omega, R1, Ending)
 fprintf(FileP, 'R2($K%s$)& %f %s\n', omega, R2, Ending)
 fclose(FileP);
