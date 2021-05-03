@@ -26,17 +26,6 @@ R2 = 2; %Kohm
 MU = WriteSim (R1, R2, C1, n, A, nD);
 
 
-FileP = fopen('InputParameters.tex','w');
-nu = '\nu'
-omega = '\Omega'
-
-fprintf(FileP, 'Tranformer Windings & %f %s\n', n, Ending)
-fprintf(FileP, 'Number of Diodes & %f %s\n', nD, Ending)
-fprintf(FileP, 'C1($%s F$) & %f %s\n',nu, C1, Ending)
-fprintf(FileP, 'R1($K%s$)& %f %s\n', omega, R1, Ending)
-fprintf(FileP, 'R2($K%s$)& %f %s\n', omega, R2, Ending)
-fclose(FileP);
-
 
 File1 = fopen('OutputResults.tex','w');
 
@@ -57,6 +46,18 @@ R2 = 6.07; %Kohm
 
 %create the circuits for the ngspice
 MU_op = WriteSim (R1, R2, C1, n, A, nD);
+
+
+FileP = fopen('InputParameters.tex','w');
+nu = '\nu'
+omega = '\Omega'
+
+fprintf(FileP, 'Tranformer Windings & %f %s\n', n, Ending)
+fprintf(FileP, 'Number of Diodes & %f %s\n', nD, Ending)
+fprintf(FileP, 'C1($%s F$) & %f %s\n',nu, C1, Ending)
+fprintf(FileP, 'R1($K%s$)& %f %s\n', omega, R1, Ending)
+fprintf(FileP, 'R2($K%s$)& %f %s\n', omega, R2, Ending)
+fclose(FileP);
 
 
 FileV = fopen('OutputResults_Op.tex','w');

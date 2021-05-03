@@ -97,8 +97,11 @@ hold on;
 plot (t*1000, Vac, "g");
 hold on;
 plot (t*1000, Venv, "b");
+hold on
+x = xlim; % current x-axis limits
+plot([x(1) x(2)],[12, 12])
 grid on
-legend('Vout', 'Vac', 'Venv','Location','southwest')
+legend('Vout', 'Vac', 'Venv', '12V','Location','southwest')
 xlabel ("t[ms]");
 ylabel ("V[V]");
 title ('AC/DC converter')
@@ -109,7 +112,6 @@ h2 = figure ();
 plot (t*1000, Vout - 12, "b");
 hold on;
 plot (t*1000, error, "g");
-hold on;
 grid on
 legend('Vout-12', 'AverageValue-12','Location','southwest')
 xlabel ("t[ms]");
@@ -124,8 +126,11 @@ hold on;
 plot (t*1000, Vac, "g");
 hold on;
 plot (t*1000, Venv, "b");
+hold on
+x = xlim; % current x-axis limits
+plot([x(1) x(2)],[12, 12])
 grid on
-legend('Vout', 'Vac', 'Venv','Location','southwest')
+legend('Vout', 'Vac', 'Venv', '12V','Location','southwest')
 xlabel ("t[ms]");
 ylabel ("V[V]");
 title ('AC/DC converter Optimized')
@@ -136,7 +141,6 @@ h2 = figure ();
 plot (t*1000, Vout - 12, "b");
 hold on;
 plot (t*1000, error, "g");
-hold on;
 grid on
 legend('Vout-12', 'AverageValue-12','Location','southwest')
 xlabel ("t[ms]");

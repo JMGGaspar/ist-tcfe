@@ -27,7 +27,7 @@ echo "********************************************"
 
 set tstart = 0.02
 set tstop = 0.12
-set deltat = 0.0001
+set deltat = 0.00005
 
 tran $deltat $tstop $tstart
 
