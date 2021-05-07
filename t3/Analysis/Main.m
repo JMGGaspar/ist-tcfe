@@ -30,10 +30,10 @@ MU = WriteSim (R1, R2, C1, n, A, nD);
 
 File1 = fopen('OutputResults.tex','w');
 
-fprintf(File1, 'VRipple (V) & %f %s\n', vRipple, Ending)
-fprintf(File1, 'Vaverage (V) & %f %s\n', Vmean, Ending)
-fprintf(File1, 'Vdeviation (V) & %f %s\n', avrError, Ending)
-fprintf(File1, 'Cost(MU) & %f %s\n', MU, Ending)
+fprintf(File1, '$V_{Ripple} (V)$ & %e %s\n', vRipple, Ending)
+fprintf(File1, '$V_{average} (V)$ & %f %s\n', Vmean, Ending)
+fprintf(File1, '$V_{deviation} (V)$ & %e %s\n', avrError, Ending)
+fprintf(File1, '$Cost (MU)$ & %f %s\n', MU, Ending)
 fclose(File1);
 
 
@@ -50,12 +50,12 @@ MU_op = WriteSim (R1, R2, C1, n, A, nD);
 
 
 FileP = fopen('InputParameters.tex','w');
-nu = '\nu';
+mu = '\mu';
 omega = '\Omega';
 
-fprintf(FileP, 'Tranformer Windings & %f %s\n', n, Ending)
+fprintf(FileP, 'Transformer Windings & %f %s\n', n, Ending)
 fprintf(FileP, 'Number of Diodes & %f %s\n', nD, Ending)
-fprintf(FileP, 'C1($%s F$) & %f %s\n',nu, C1, Ending)
+fprintf(FileP, 'C1($%s F$) & %f %s\n',mu, C1, Ending)
 fprintf(FileP, 'R1($K%s$)& %f %s\n', omega, R1, Ending)
 fprintf(FileP, 'R2($K%s$)& %f %s\n', omega, R2, Ending)
 fclose(FileP);
@@ -63,8 +63,8 @@ fclose(FileP);
 
 FileV = fopen('OutputResults_Op.tex','w');
 
-fprintf(FileV, 'VRipple(V) & %f %s\n', vRipple, Ending)
-fprintf(FileV, 'Vaverage(V) & %f %s\n', Vmean, Ending)
-fprintf(FileV, 'Vdeviation(V) & %f %s\n', avrError, Ending)
-fprintf(FileV, 'Cost(MU) & %f %s\n', MU_op, Ending)
+fprintf(FileV, '$V_{Ripple} (V)$ & %e %s\n', vRipple, Ending)
+fprintf(FileV, '$V_{average} (V)$ & %f %s\n', Vmean, Ending)
+fprintf(FileV, '$V_{deviation} (V)$ & %e %s\n', avrError, Ending)
+fprintf(FileV, '$Cost (MU)$ & %f %s\n', MU_op, Ending)
 fclose(FileV);

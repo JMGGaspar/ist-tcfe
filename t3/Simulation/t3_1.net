@@ -32,6 +32,7 @@ set deltat = 0.00005
 tran $deltat $tstop $tstart
 
 set Cost = Mu
+let cost = $Cost$ 
 set ripple = {maximum(v(2))-minimum(v(2))}
 set mean = {abs(mean(v(2))- 12)}
 set denom = {$Cost*($mean+$ripple+1e-6)}
@@ -41,7 +42,7 @@ let Ripple = $ripple
 echo  "op_TAB"
 print Ripple
 print $mean
-print $Cost
+print cost
 print merit
 echo  "op_END"
 
