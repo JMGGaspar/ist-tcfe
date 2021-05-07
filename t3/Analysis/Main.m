@@ -7,7 +7,7 @@ A=230; %V
 Periods= 5; %Number of periods 
 
 %Define the diode model parameters
-n=10; %Windings in the transformer
+n = 10; %Windings in the transformer
 nD = 18 %(number of diods)
 Von = 12/nD; %V
 Rd = 7.058990e+01 %Ohm
@@ -39,9 +39,9 @@ fclose(File1);
 
 %Optimized analysis
 n=2; %Windings in the transformer
-C1 = 1600; %uF
+C1 = 3190; %uF
 R1 = 1000; %Kohm
-R2 = 64.9152; %Kohm
+R2 = 64.91509; %Kohm
 
 [vRipple,avrError,Vmean] = plots(n, f, A, Periods, Von, R1, C1, R2, Rd, nD, 2);
 

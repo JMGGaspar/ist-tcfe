@@ -35,6 +35,7 @@ set Cost = Mu
 let cost = $Cost$ 
 set ripple = {maximum(v(2))-minimum(v(2))}
 set mean = {abs(mean(v(2))- 12)}
+* set mean = 0
 set denom = {$Cost*($mean+$ripple+1e-6)}
 let merit = {($denom)^(-1)}
 let Ripple = $ripple
