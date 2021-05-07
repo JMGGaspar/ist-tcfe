@@ -1,0 +1,156 @@
+\section{Theoretical Analysis}
+\label{sec:analysis}
+\indent
+
+% Falar apenas da versão não optimizada
+%explicar a teoria da cena e mostrar no fim os graficos do octave não optimizados
+
+In this section, the circuit shown in Figure \ref{fig:schematic} is analysed theoretically.
+
+The theoretical output values of the envelope detector and the voltage regulator will be calculated using {\it Octave}. These values can be obtained with the aid of the Kirchhoff laws, the diode equations and its simplified models.
+
+To begin with the circuit must be divided into.
+
+\begin{itemize}
+    \item \textbf{Voltage source}: The circuit is connected to mains voltage, this means the voltage source as an amplitude of 230 V and a frequency of 50 Hz;
+    \item \textbf{Transformer}: The circuit cannot work the supplied voltage, so it must be transformed into a lower voltage, with the aid of a transformer;
+    \item \textbf{Envelope detector}: This component is responsible for the rectifying of the current and the initial voltage smoothing ;
+    \item \textbf{Voltage regulator}: Since the desired output is a horizontal line, additional smoothing is required, to ensure the best results possible.
+\end{itemize}
+
+With all these parts, the final circuit can be drawn as shown in Figure \ref{fig:Circuit}.
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = 0.8\linewidth]{FullCircuitFigure.pdf}
+    \caption{AC/DC converter circuit}
+    \label{fig:Circuit}
+\end{figure}
+
+
+\subsection{Envelope Detector Analysis}
+\label{subsection:ED_analysis}
+\indent
+
+The envelope detector consist of a rectifier, a resistor and a capacitor. 
+
+
+The rectifier used is the bridge rectifier, which is a type of full-wave rectifier. Ideally, this should mean that its output ($v_O$) is the module of its input ($v_S$): $v_O=|v_S|$.
+
+%Ver na simulaçao se é 2 Von ou so 1 von
+However, the voltage needed to activate the diodes ($V_{ON}$) has to be taken into account as there are no ideal components in the real world.
+Therefore, $v_O=|v_S| - 2V_{ON}$ since we have 2 diodes connected in series in both ways, as seen in Figure \ref{fig:BR}.
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.6\linewidth]{EnvelopeFigure.pdf}
+    \caption{Envelope detector}
+    \label{fig:BR}
+\end{figure}
+
+Now that the voltage is positive, a capacitor and a resistor are used to smooth the wave in order to make it as close to a line as possible. For this to be possible, an instant ($t_{OFF}$), where the diodes are turned off, has to be established. This way, the current isn't allowed to pass through the diodes making the capacitor the only voltage source in the circuit. $t_{OFF}$ can be calculated using equation \ref{eq:toff}, which was solved approximately using $Octave$.
+
+\begin{equation}
+    \frac{A\cdot cos(\omega \cdot t_{OFF})-2V_{ON}}{R}=C\cdot A\cdot \omega \cdot sin(\omega \cdot t_{OFF})
+    \label{eq:toff}
+\end{equation}
+
+As known, a capacitor supplies an exponentially decaying voltage according to equation \ref{eq:vc}.
+
+\begin{equation}
+    v_O(t)=(A\cdot sin(\omega\cdot t_{OFF})-2V_{ON})\cdot e ^{-\frac{t-t_{OFF}}{RC}}
+    \label{eq:vc}
+\end{equation}
+
+Therefore an instant where the diodes are turned back on ($t_{ON}$) also needs to be implemented. This instant is the one where the voltage supplied by the capacitor intercepts the rectified voltage, and it can either be calculated using similar methods to the ones used to calculate $t_{OFF}$ or by intercepting the voltage graphics. 
+
+
+\subsection{Voltage Regulator Analysis}
+\label{subsection:VR_analysis}
+\indent
+
+The voltage regulator (Figure \ref{fig:VR}) consists of a resistor and a limiter, which itself is composed by multiple diodes connected in series. This component takes advantage of the non-linear diode characteristics to attenuate oscillations in the input signal whilst not being frequency dependent.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.6\linewidth]{RegulatorFigure.pdf}
+    \caption{Voltage Regulator}
+    \label{fig:VR}
+\end{figure}
+
+The limiter's function is to regulate the voltage to the desired voltage output (in this case it would be 12V). This is done by varying the number of diodes ($N$) used, once that the limit will be approximately $N$ times the voltage needed to activate the diodes ($V_{ON}$). Since the voltage regulator is connected to the envelope detector, the output of the limiter ($V_o$) depends on the output of the envelope detector ($V_{env}$) according to equation \ref{eq:Vo}:
+
+\begin{equation}
+    V_o(t)= \begin{cases} N\cdot V_{ON} + v_o, & V_{env} \geq N\cdot V_{ON} \\ V_{env}, & V_{env} < N\cdot V_{ON}\\ \end{cases} ,
+    \label{eq:Vo}
+\end{equation}
+being $v_o$ the incremental output voltage.
+
+The resistor has various functions, such as to prevent the overheating of the diodes. As these are not ideal diodes, the limit set by them will not be perfect, so the resistor will also have a smothering effect on the voltage output, reducing $v_o$, and therefore making the output as close as possible to a line (DC).
+The incremental voltage $v_o$ can be approximately described by equation \ref{eq:vo}:
+
+\begin{equation}
+    v_o=\frac{N\cdot r_d}{N\cdot r_d+R_2}\cdot v_{env}\hspace{10pt},
+    \label{eq:vo}
+\end{equation}
+where $v_{env}$ is the incremental voltage of the envelope detector's output.
+
+
+Although there is equation \ref{eq:Vo}, equation \ref{eq:DiodeEq} was used to calculate $V_o$ using $Octave$.
+
+\begin{equation}
+    i=I_S\cdot (e^\frac{v}{\eta\cdot V_T}-1) \hspace{10pt}
+    \label{eq:DiodeEq}
+\end{equation}
+where $i$ is the current passing trough the diode, $I_S$ is the reverse saturation current, $v$ is the voltage across the terminals of the diode, $\eta$ is a constant from the material of the diode (this value is 1 for the diodes currently in use) and $V_T$ is the thermal voltage from the diode.
+
+This action goes against the model used before, but it offers the best results without great approximations. To calculate the output voltage, the KVL equation can be written based on the input voltage from the envelope detector ($V_{env}$), the Resistor ($R$) and the number of diodes ($N$)  as seen in equation \ref{eq:DiodeKVL}. To simplify the circuit, the diodes in series where replaced by one with $\eta_t = \eta\cdot N$.
+
+\begin{equation}
+    V_o+R\cdot I_S\cdot (e^\frac{v}{N\cdot V_T}-1)-V_{env}=0
+    \label{eq:DiodeKVL}
+\end{equation}
+
+
+\subsection{Final results}
+\label{subsection:Octave_Results}
+\indent
+
+With all these equations solved with some arbitrary values for the inputs, the following graph can be obtained  using {\it Octave} (Figure \ref{fig:OctaveOut}):
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.6\linewidth]{ACDC_converter.eps}
+    \caption{{\it Octave} output}
+    \label{fig:OctaveOut}
+\end{figure}
+
+In order to make a better analysis, a closeup at the voltage ripple and average voltage can be seen in Figure \ref{fig:OctaveOutClose}):
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.6\linewidth]{Ripple.eps}
+    \caption{{\it Octave} output closeup}
+    \label{fig:OctaveOutClose}
+\end{figure}
+
+% introdução á tabela do voltage ripple e average
+In this graphic we can see the output parameters from {\it Octave}. Ideally the ripple and the average voltage value ($(mean(v(2))-12)$) should be as close to 0 as possible, the cost (in Monetary Units, $mu$) should be as low as possible and the merit should be as high as possible.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value} \\ \hline
+    \input{../Analysis/OutputResults.tex}
+  \end{tabular}
+  \caption{Output parameters from {\it Octave} }
+  \label{tab:OutputNGS}
+\end{table}
+
+As seen in both graphics and in table \ref{tab:OutputNGS}, the results aren't great. This was made on purpose in order to facilitate their analysis.
+In section \ref{sec:simulation} the results will be optimised in order to get as close to the ideal values as possible.

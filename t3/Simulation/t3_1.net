@@ -25,8 +25,8 @@ echo  "Transient Analysis"
 echo "********************************************"
 
 
-set tstart = 0.02
-set tstop = 0.12
+set tstart = 0.5
+set tstop = 0.6
 set deltat = 0.00005
 
 tran $deltat $tstop $tstart

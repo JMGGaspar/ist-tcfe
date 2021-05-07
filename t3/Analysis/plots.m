@@ -4,7 +4,7 @@ format long
   
 T = 1/f;
 w= 2*pi*f;
-incr = 200*iter
+incr = 200*iter.^4
 
 
 R = R1*1e3
@@ -52,7 +52,7 @@ for i = 0:(Periods*2-2)
     if t(i2) < (tOFF)
     Venv(inst) = Vret(i2);
     
-    elseif vRipple(i2) > Vret(i2)
+    elseif vRipple(i2) >= Vret(i2)
     Venv(inst) = vRipple(i2);
     
     else
@@ -111,7 +111,8 @@ print (hn, "ACDC_converter", "-depsc");
 h2 = figure ();
 plot (t*1000, Vout - 12, "b");
 hold on;
-plot (t*1000, error, "g");
+x = xlim; % current x-axis limits
+plot([x(1) x(2)],[error, error])
 grid on
 legend('Vout-12', 'AverageValue-12','Location','southwest')
 xlabel ("t[ms]");
@@ -140,7 +141,8 @@ print (hn, "ACDC_converter_Optimized", "-depsc");
 h2 = figure ();
 plot (t*1000, Vout - 12, "b");
 hold on;
-plot (t*1000, error, "g");
+x = xlim; % current x-axis limits
+plot([x(1) x(2)],[error, error])
 grid on
 legend('Vout-12', 'AverageValue-12','Location','southwest')
 xlabel ("t[ms]");

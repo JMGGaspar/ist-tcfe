@@ -1,0 +1,142 @@
+% ----------------------------------------------------------------------
+%  Set the document class
+% ----------------------------------------------------------------------
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=2cm, tmargin=3cm, rmargin=2cm, bmargin=2cm, headheight=5cm]{geometry}
+
+% ----------------------------------------------------------------------
+% Define external packages, language, margins, fonts and new commands
+% ----------------------------------------------------------------------
+%\input{preamble} 
+\usepackage[utf8]{inputenc}   % <<<<< Linux
+\usepackage[english]{babel} % <<<<< English
+\usepackage{notoccite}
+\usepackage[skip=0.5\baselineskip]{caption}
+\hyphenation{GTKWave}
+\usepackage{listings}
+\usepackage[all]{nowidow}
+\usepackage{graphicx}
+\usepackage[numbers,sort&compress]{natbib} % <<<<< References in numbered list [1],[2],...
+\usepackage{subcaption} 
+\usepackage{mdframed}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{comment}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+%\usepackage{setspace}
+\renewcommand{\baselinestretch}{1.5}
+
+%Header
+\pagestyle{fancy}{
+\fancyhf{}
+\rhead{\includegraphics[width=30mm]{../../figlib/IST_A_CMYK_POS.pdf}}
+\lhead{Grupo 67}
+
+%footer
+\lfoot{Lisbon, April 5, 2021}
+\rfoot{Page \thepage}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Begin Document                                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+
+
+% Set roman numbering (i,ii,...) before the start of chapters
+%\pagenumbering{roman}
+
+% ----------------------------------------------------------------------
+%  Cover page
+% ----------------------------------------------------------------------
+\input{frontcover}
+\pagestyle{fancy}
+
+
+% ----------------------------------------------------------------------
+% Dedication page (optional)
+% ----------------------------------------------------------------------
+%\input{dedication} 
+%\cleardoublepage
+
+% ----------------------------------------------------------------------
+%  Acknowledgments (optional)
+% ----------------------------------------------------------------------
+%\input{acknowledgements}
+%\cleardoublepage
+
+% ----------------------------------------------------------------------
+%  Abstract (both in English and Portuguese)
+% ----------------------------------------------------------------------
+%\input{resumo} 
+%\cleardoublepage
+
+%\input{abstract} 
+
+% ----------------------------------------------------------------------
+%  Table of contents, list of tables, list of figures and nomenclature
+% ----------------------------------------------------------------------
+
+% Table of contents
+
+\tableofcontents
+
+% List of tables
+%\addcontentsline{toc}{section}{\listtablename}
+%\listoftables
+%\cleardoublepage 
+
+% List of figures
+%\addcontentsline{toc}{section}{\listfigurename}
+%\listoffigures
+%\cleardoublepage 
+
+% Set arabic numbering (1,2,...) after preface
+%
+%\setcounter{page}{1}
+%\pagenumbering{arabic}
+
+% ----------------------------------------------------------------------
+%  Body
+% ----------------------------------------------------------------------
+
+\pagebreak
+\setcounter{page}{1}
+\input{intro}
+
+\pagebreak
+\input{analysis}
+
+\pagebreak
+\input{simulation}
+
+\pagebreak
+\input{comparison}
+
+\pagebreak
+\input{conclusion}
+%\cleardoublepage
+
+% ----------------------------------------------------------------------
+%  Bibliography
+% ----------------------------------------------------------------------
+%\addcontentsline{toc}{section}{\bibname}
+%\bibliographystyle{abbrvunsrtnat} % <<<<< SELECT IF USING REFERENCES BY NUMBER (CITATION ORDER)
+%\bibliography{../../../BIBfile.bib}
+
+% ----------------------------------------------------------------------
+\end{document}
+% ----------------------------------------------------------------------
+

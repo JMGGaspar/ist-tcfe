@@ -6,7 +6,7 @@
 FILE=report
 
 #list of LibreOffice Draw files
-LODFIGS = $(patsubst %.odp,%.pdf,$(wildcard *.odp))
+LODFIGS = $(patsubst %.odg,%.pdf,$(wildcard *.odg))
 
 all: $(FILE).pdf
 	evince $< &
@@ -19,7 +19,7 @@ $(FILE).pdf: $(wildcard *.tex) $(LODFIGS)
 
 
 #convert libreoffice draw figures to pdf
-%.pdf: %.odp
+%.pdf: %.odg
 	soffice --headless --convert-to pdf $<
 
 clean:
