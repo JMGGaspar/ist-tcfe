@@ -9,13 +9,13 @@ In this section, the circuit shown in Figure \ref{fig:schematic} is analysed the
 
 The theoretical output values of the envelope detector and the voltage regulator will be calculated using {\it Octave}. These values can be obtained with the aid of the Kirchhoff laws, the diode equations and its simplified models.
 
-To begin with the circuit must be divided into.
+First the circuit must be divided into:
 
 \begin{itemize}
     \item \textbf{Voltage source}: The circuit is connected to mains voltage, this means the voltage source as an amplitude of 230 V and a frequency of 50 Hz;
     \item \textbf{Transformer}: The circuit cannot work the supplied voltage, so it must be transformed into a lower voltage, with the aid of a transformer;
-    \item \textbf{Envelope detector}: This component is responsible for the rectifying of the current and the initial voltage smoothing ;
-    \item \textbf{Voltage regulator}: Since the desired output is a horizontal line, additional smoothing is required, to ensure the best results possible.
+    \item \textbf{Envelope detector}: This component is responsible for rectifying the current and for the initial voltage smoothing;
+    \item \textbf{Voltage regulator}: Since the desired output is a horizontal line, additional smoothing is required to ensure the best results possible.
 \end{itemize}
 
 With all these parts, the final circuit can be drawn as shown in Figure \ref{fig:Circuit}.
@@ -129,7 +129,7 @@ With all these equations solved with some arbitrary values for the inputs, the f
     \label{fig:OctaveOut}
 \end{figure}
 
-In order to make a better analysis, a closeup at the voltage ripple and average voltage can be seen in Figure \ref{fig:OctaveOutClose}):
+In order to make a better analysis, a closeup at the voltage ripple and average voltage can be seen in Figure \ref{fig:OctaveOutClose}:
 
 \begin{figure}[H]
     \centering
