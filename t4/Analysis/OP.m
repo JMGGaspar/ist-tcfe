@@ -1,33 +1,24 @@
-function [Vemit2,Iemit2] = OP(Vcc, Rb1, Rb2, Re, Rc, VbeON, BFN, Rout, VebON, BFP)
+function [IC2, IC1, RB] = OP(VCC, RB1, RB2, RE1, RC1, VBEON, BFN, RE2, VEBON, BFP)
 
 format long
 %Gain
 
-Rb=1/(1/Rb1+1/Rb2);
-Vbase = (Rb2/(Rb1+Rb2))*Vcc
+RB=1/(1/RB1+1/RB2);
+VEQ = (RB2/(RB1+RB2))*VCC;
 
-%{
-%my method
-Vemit = (Vbase-VbeON)
-Iemit = Vemit/Re
-Ibase = Iemit/(BFN+1)
-Icoll = Ibase*BFN
-Vcoll = Vcc - Icoll*Rc
-%}
+IB1 =(VEQ-VBEON)/(RB+(1+BFN)*RE1);
+IC1 = IB1*BFN;
+IE1 = IB1*(1+BFN);
 
-%teachers
-
-Ibase =(Vbase-VbeON)/(Rb+(1+BFN)*Re)
-Icoll = Ibase*BFN
-Iemit = Ibase*(1+BFN)
-
-Vemit = Iemit*Re
-Vcoll = Vcc - Icoll*Rc
-Vce = Vcoll- Vemit
-
+VE1 = IE1*RE1;
+VO1 = VCC - IC1*RC1;
+VCE = VO1- VE1;
 
 %output 
-Iemit2= (Vcc- VebON- Vcoll)/Rout
-Vemit2=Vcoll+VebON
-   
+
+VI2 = VO1;
+IE2 = (VCC-VEBON-VI2)/RE2;
+IC2 = BFP/(BFP+1)*IE2;
+VO2 = VCC - RE2*IE2;
+
 endfunction
