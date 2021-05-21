@@ -10,7 +10,7 @@ all_1: ngspice_1.log
 
 
 
-ngspice_1.log: ../Simulation/t3_1.net
+ngspice_1.log: ../Simulation/t4.net
 	ngspice -b $< -o $@
 
 
