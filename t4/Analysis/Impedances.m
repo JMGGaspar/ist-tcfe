@@ -2,6 +2,7 @@ function Impedances()
 
 %gain stage
 
+
 RB=1/(1/RB1+1/RB2)
 VEQ=RB2/(RB1+RB2)*VCC
 IB1=(VEQ-VBEON)/(RB+(1+BFN)*RE1)
