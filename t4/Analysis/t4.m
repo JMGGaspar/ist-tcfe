@@ -1,3 +1,5 @@
+format long
+
 %define the constants
 %NPN transistor
 VT=25e-3;
@@ -24,6 +26,12 @@ Re = 100;
 Rout = 100;
 Rload = 8;
 
+Ci=1e-3;
+Cb=1e-3;
+Co=1e-6;
 
-OP(Vcc, Rb1, Rb2, Re, Rc, VbeON, BFN, Rout, VebON, BFP)
+
+Cost = WriteSim(Vcc, Vampl, Rin, Rc, Rb1, Rb2, Re, Rout, Rload, Ci, Cb, Co)
+
+[Vemit2, Iemit2] = OP(Vcc, Rb1, Rb2, Re, Rc, VbeON, BFN, Rout, VebON, BFP)
 
