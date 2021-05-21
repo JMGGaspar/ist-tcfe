@@ -12,8 +12,8 @@ Rin in in2 100
 Ci in2 base 1m
 
 * bias circuit
-R1 vcc base 80k
-R2 base 0 20k
+Rb1 vcc base 80k
+Rb2 base 0 20k
 
 * gain stage
 Q1 coll base emit BC547A
@@ -48,22 +48,43 @@ set color5=rgb:3/8/0
 set color6=rgb:4/0/0
 set units=degrees
 
+************************************************
 op
+
 
 echo  "op_TAB"
 print all
 echo  "op_END"
 
+
+let Vce = v(coll)-v(emit)
+let Vbe = v(base)-v(emit)
+let Vec = v(emit2)
+let Veb = v(emit2)-v(coll)
+
+let diffPNP = (Vec-Veb)
+let diffNPN = (Vce-Vbe)
+
+
+echo  "op2_TAB"
+print Vce
+print Vbe
+print Vec
+print Veb
+print diffNPN
+print diffPNP
+echo  "op2_END"
+
 * time analysis
 tran 1e-5 1e-2
-plot v(coll)
+*plot v(coll)
 hardcopy vo1.ps vdb(coll)
 
 
 * frequency analysis
-ac dec 10 10 100MEG
-plot vdb(coll)
-plot vp(coll)
+ac dec 10 10 1000MEG
+*plot vdb(coll)
+*plot vp(coll)
 hardcopy vo1f.ps vdb(coll)
 
 
@@ -86,7 +107,7 @@ hardcopy vo2f_m.ps vdb(out) cutoff
 hardcopy vo2f_ph.ps vp(out)
 hardcopy tf.ps {vdb(out)-vdb(in)}
 
-echo  "op2_TAB"
+echo  "freq_TAB"
 print bandwidth
 print gain_low
 print gain_band
@@ -94,14 +115,17 @@ print gain_high
 print bandwidth*gain_band
 print merit
 
-*input impedance in kohm
-let input_impedance = 100*v(in)[40]/(v(in)[40]-v(in2)[40])/1000
+*input impedance in ohm
+let input_impedance = 100*v(in)[40]/(v(in)[40]-v(in2)[40])
 print input_impedance
 
-*output impedance in kohm
-let output_impedance = v(out)[40]/i(vout)[40]
+*output impedance in ohm
+let output_impedance = v(out)[40]/(i(vout)[40])
 print output_impedance
-echo  "op2_END"
+echo  "freq_END"
+
+hardcopy imp.ps (100*v(in)/(v(in)-v(in2))) (v(out)/(i(vout))) input_impedance output_impedance
+
 
 quit
 .endc

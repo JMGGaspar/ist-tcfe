@@ -12,7 +12,7 @@ all:
 	make -C Analysis
 	make -C Simulation
 *	make -C Doc
-*	cp Doc/report.pdf .
+*	cp Doc/report.pdf
 
 clean:
 	make -C Analysis clean
