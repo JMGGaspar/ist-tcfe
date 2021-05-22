@@ -1,4 +1,4 @@
-function [ZI, ZO] = Impedances(IC2, VAFP, BFP, RE2, RE1, RC1, VAFN, BFN, VT, RB, RS, IC1)
+function [ZI, ZO, gm1, rpi1, ro1, AV2] = Impedances(IC2, VAFP, BFP, RE2, RE1, RC1, VAFN, BFN, VT, RB, RS, IC1)
 
 %gain stage
 
