@@ -35,16 +35,22 @@ cf = horzcat(cf, f(1, j));
 endif
 endfor
 
-try
+gain=abs(t_max);
+
 bandwidth = cf(2) - cf(1)
-lower_cutoff = cf(1, 1)
-Merit = bandwidth*abs(t_max)/(Cost*lower_cutoff)
+lower_cutoff = cf(1)
+Merit = bandwidth*gain/(Cost*lower_cutoff)
 
-catch
-bandwidth = cf(1)
-lower_cutoff = "error"
 
-end_try_catch
+Ending = '\\ \hline';
+File1 = fopen('OutputResults.tex','w');
+
+fprintf(File1, '$Frequency Bandwidth (Hz)$ & %e %s\n', bandwidth, Ending)
+fprintf(File1, '$Lower Cutoff Frequency(Hz)$ & %e %s\n', lower_cutoff, Ending)
+fprintf(File1, '$V_{gain} (dB)$ & %f %s\n', gain, Ending)
+fprintf(File1, '$Cost (MU)$ & %f %s\n', Cost, Ending)
+fprintf(File1, '$Merit$ & %f %s\n', Merit, Ending)
+fclose(File1);
 
 
 hf = figure();
@@ -79,7 +85,9 @@ endfunction
 function y = gs_t(f, Rc, gm1, Ro1, Rpi1, Re, Rb, Cb)
 Ge = 1/Re;
 Zeq = 1/(Ge + 2*pi*f*i*Cb);
-y = -Rc*(-gm1*Ro1*Rpi1+Zeq)/(Zeq*(-gm1*Ro1*Rpi1+Zeq)+(Rc+Ro1+Zeq)*(-Rb-Rpi1-Zeq));
+
+%y= (Rc*(-gm1*Ro1*Rpi1 + Zeq))/(gm1*Ro1*Rpi1*Zeq + Rc*Rpi1 + Rc*Zeq + Ro1*Rpi1 + Ro1*Zeq + Rpi1*Zeq);
+y = -Rc*(-gm1*Ro1*Rpi1+Zeq)/(Zeq*(-gm1*Ro1*Rpi1+Zeq)+(Rc+Ro1+Zeq)*(-Rpi1-Zeq));
 endfunction
 
 %Output resistor + capacitor gain

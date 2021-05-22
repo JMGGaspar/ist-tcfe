@@ -51,6 +51,8 @@ echo  "op2_END"
 tran 1e-5 1e-2
 *plot v(coll)
 hardcopy vo1.ps vdb(coll)
+hardcopy vout.ps v(in) v(out)
+
 
 
 * frequency analysis
