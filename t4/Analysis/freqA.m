@@ -56,7 +56,7 @@ xlabel ("frequency (Hz)");
 ylabel ("Magnitude (dB)");
 title ("Magnitude plot");
 legend("vo/vi(f)", "cutoff","location", "northwestoutside");
-print (hn, "Mag_oc", "-depsc");
+print (hf, "Mag_oc", "-depsc");
 
 hg = figure();
 semilogx(f, tf_ph);
@@ -65,7 +65,7 @@ xlabel ("frequency (Hz)");
 ylabel ("Phase (degrees)");
 title ("Phase Plot");
 legend("vo/vi(f)", "location", "northwestoutside");
-print (hn, "Phase_oc", "-depsc");
+print (hg, "Phase_oc", "-depsc");
 
 endfunction
 

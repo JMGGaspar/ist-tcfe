@@ -22,21 +22,21 @@ RS = 100;
 Rload = 8;
 
 %otmizable
-RC1 = 1000;
-RB1 = 80000;
-RB2 = 20000;
-RE1 = 100;
-RE2 = 100;
+RC1 = 490;
+RB1 = 81e3;
+RB2 = 27e3;
+RE1 = 84;
+RE2 = 600; %pode ser melhor, aumenta bue pouco o merito
 
-Ci=1e-3;
+Ci=0.01e-3;
 Cb=1e-3;
 Co=1e-6;
 
  
 Cost = WriteSim(VCC, Vampl, RS, RC1, RB1, RB2, RE1, RE2, Rload, Ci, Cb, Co)
 
-[IC2,IC1,RB] = OP(VCC, RB1, RB2, RE1, RC1, VBEON, BFN, RE2, VEBON, BFP);
+%[IC2,IC1,RB] = OP(VCC, RB1, RB2, RE1, RC1, VBEON, BFN, RE2, VEBON, BFP);
 
-[ZI, ZO, gm1, Rpi1, Ro1, AV2] = Impedances(IC2, VAFP, BFP, RE2, RE1, RC1, VAFN, BFN, VT, RB, RS, IC1)
+%[ZI, ZO, gm1, Rpi1, Ro1, AV2] = Impedances(IC2, VAFP, BFP, RE2, RE1, RC1, VAFN, BFN, VT, RB, RS, IC1)
 
-Merit = freqA(RS, RC1,RE1,RB, Rload, Ci, Cb, Co, Cost, gm1, Ro1, Rpi1, AV2)
+%Merit = freqA(RS, RC1,RE1,RB, Rload, Ci, Cb, Co, Cost, gm1, Ro1, Rpi1, AV2)
