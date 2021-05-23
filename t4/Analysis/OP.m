@@ -27,16 +27,12 @@ Ending = '\\ \hline';
 File1 = fopen('OPResults.tex','w');
 
 fprintf(File1, '$Vcc (V)$ & %f %s\n', VCC, Ending)
-fprintf(File1, '$V_base (V)$ & %e %s\n', VEQ, Ending)
-fprintf(File1, '$V_emiter (V)$ & %e %s\n', VE1, Ending)
-fprintf(File1, '$V_coll (V)$ & %f %s\n', VO1, Ending)
-fprintf(File1, '$V_emiter2 (V)$ & %f %s\n', VO2, Ending)
+fprintf(File1, '$V_{base} (V)$ & %e %s\n', VEQ, Ending)
+fprintf(File1, '$V_{emiter} (V)$ & %e %s\n', VE1, Ending)
+fprintf(File1, '$V_{coll} (V)$ & %f %s\n', VO1, Ending)
+fprintf(File1, '$V_{emiter2} (V)$ & %f %s\n', VO2, Ending)
 
-fprintf(File1, '$V_ce (V)$ & %f %s\n', VCE, Ending)
+fprintf(File1, '$V_{ce} (V)$ & %f %s\n', VCE, Ending)
 fclose(File1);
-
-
-
-
 
 endfunction
