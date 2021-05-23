@@ -68,20 +68,29 @@ let cutoff = vecmax(vdb(out))-3
 meas ac f1 WHEN vdb(out)=cutoff RISE=1
 meas ac f2 WHEN vdb(out)=cutoff CROSS=LAST
 let bandwidth = f2-f1
-let gain_low = abs(v(out)[6]/v(in)[6])
-let gain_band = abs(v(out)[40]/v(in)[40])
-let gain_high = abs(v(out)[46]/v(in)[46])
-let merit = (bandwidth*gain_band)/(f1*cost)
+*let gain_low = abs(v(out)[6]/v(in)[6])
+*let gain_band = abs(v(out)[40]/v(in)[40])
+*let gain_high = abs(v(out)[46]/v(in)[46])
+
+
+
+let voutm = vecmax(abs(vdb(out)))
+let vinm = vecmax(abs(vdb(in)))
+
+
+let gain = (voutm-vinm)
+
+let merit = (bandwidth*gain)/(f1*cost)
+
 hardcopy vo2f_m.ps vdb(out) cutoff
 hardcopy vo2f_ph.ps vp(out)
 hardcopy tf.ps {vdb(out)-vdb(in)}
 
 echo  "freq_TAB"
 print bandwidth
-print gain_low
-print gain_band
-print gain_high
-print bandwidth*gain_band
+print gain
+print bandwidth*gain
+print Cost
 print merit
 
 *input impedance in ohm

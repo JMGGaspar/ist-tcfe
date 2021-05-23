@@ -28,12 +28,13 @@ Vout= -C(3)*Rc
 
 
 
-A2= [Re2+Rpi2    O,   Re2      ;...
-     Re2    ,  -Ro2,  Ro2     ;...
-     Rpi2*gm2,  -I,   O       ];
+A2= [Re2+Rpi2    O,   Re2 ,O ;...
+     Re2    ,  -Ro2,  Ro2 ,O  ;...
+     Rpi2*gm2,  -I,   O   ,O  ;...
+     Re2     , O  ,  Re2, -I];
 
-B2= [Vc1;O;O];
+B2= [Vc1;O;O;O];
 
 C2 = A2\B2
 
-Vout2= (C2(1)+C2(3))*Re2
+Vout2= (C2(4))

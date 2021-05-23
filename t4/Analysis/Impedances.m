@@ -41,7 +41,7 @@ ZO=1/(go2+gm2/gpi2*gB+ge2+gB)
   
   
 Ending = '\\ \hline';
-Ohm = "\Ohm"
+Ohm = "\Omega"
 File1 = fopen('impedances.tex','w');
 
 fprintf(File1, '$Input impedance(%s)$ & %e %s\n',Ohm , ZI, Ending)

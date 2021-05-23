@@ -2,6 +2,7 @@ function Merit = freqA( Rs, Rc,Re, Rb, Rload, Ci, Cb, Cout, Cost, gm1, Ro1, Rpi1
   
 f = logspace(1, 8);
 
+
 tf = [];
 for j=1:1:size(f, 2)
 tf = horzcat(tf, is_t(f(1, j), Rs, Ci)*gs_t(f(1, j), Rc, gm1, Ro1, Rpi1, Re, Rb, Cb)*AV2*out_t(f(1, j),Rload, Cout));
@@ -92,5 +93,6 @@ endfunction
 
 %Output resistor + capacitor gain
 function y = out_t(f, Rload, Cout)
+  
 y = 2*pi*f*i*Cout*Rload/(1+2*pi*f*i*Cout*Rload);
 endfunction
