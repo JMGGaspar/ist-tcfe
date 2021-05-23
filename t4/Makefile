@@ -5,10 +5,6 @@
 # ------------------------------------------------------------
 
 all:
-	@echo "******************************************************************"
-	@echo "This may take a while, take a seat and have a drink."
-	@echo "Reasons why were explained in the section Comparison of the report"
-	@echo "******************************************************************"
 	make -C Analysis
 	make -C Simulation
 #	make -C Doc

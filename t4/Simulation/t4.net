@@ -64,7 +64,7 @@ hardcopy vo1f.ps vdb(coll)
 
 set Cost = Mu
 let cost = $Cost$ 
-let cutoff = vecmax(vdb(out))-3
+let cutoff = vecmax(abs(vdb(out)))-3
 meas ac f1 WHEN vdb(out)=cutoff RISE=1
 meas ac f2 WHEN vdb(out)=cutoff CROSS=LAST
 let bandwidth = f2-f1

@@ -1,4 +1,4 @@
-function Merit = freqA( Rs, Rc,Re, Rb, Rload, Ci, Cb, Cout, Cost, gm1, Ro1, Rpi1, AV2)
+function Merit = freqA( Rs, Rc,Re, Rb, Rload, Ci, Cb, Cout, Cost, gm1, Ro1, Rpi1, AV2,AV_DB)
   
 f = logspace(1, 8);
 
@@ -73,6 +73,9 @@ ylabel ("Phase (degrees)");
 title ("Phase Plot");
 legend("vo/vi(f)", "location", "northwestoutside");
 print (hg, "Phase_oc", "-depsc");
+
+
+
 
 endfunction
 

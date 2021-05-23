@@ -1,4 +1,4 @@
-function [ZI, ZO, gm1, rpi1, ro1, AV2] = Impedances(IC2, VAFP, BFP, RE2, RE1, RC1, VAFN, BFN, VT, RB, RS, IC1)
+function [ZI, ZO, gm1, rpi1, ro1, AV2, AV_DB] = Impedances(IC2, VAFP, BFP, RE2, RE1, RC1, VAFN, BFN, VT, RB, RS, IC1)
 
 %gain stage
 
@@ -32,8 +32,10 @@ ZI2 = (gm2+gpi2+go2+ge2)/gpi2/(gpi2+go2+ge2);
 ZO2 = 1/(gm2+gpi2+go2+ge2);
 
 
+
 %total
 gB = 1/(1/gpi2+ZO1);
+
 AV = (gB+gm2/gpi2*gB)/(gB+ge2+go2+gm2/gpi2*gB)*AV1
 AV_DB = 20*log10(abs(AV))
 ZI=ZI1
