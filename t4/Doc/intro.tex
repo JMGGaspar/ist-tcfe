@@ -1,0 +1,29 @@
+\section{Introduction}
+\label{sec:introduction}
+
+% state the learning objective 
+
+\indent
+
+The objective of this laboratory assignment is to create a circuit that works as an {\bf audio amplifier}. 
+
+An audio amplifier is a device that aims to amplify the intensity of a sound, given as an input, while avoiding the introduction of noise or sound deformation. 
+
+This circuit does not process sound waves. It receives as an input an analog electrical signal, which is a processed sound wave (for example, by a microphone), and amplifies it, producing an amplified analog electrical signal as an output. 
+
+The main challenge is to find a good balance between cost of production, width of the pass-band, and gain, i.e. a non-expensive amplifier that is able to increase the sound amplitude without significant losses in higher and lower frequencies. 
+
+The circuit, which can be seen on the following figure (Figure \ref{fig:schematic}), is composed by two stages: the \textit{gain stage} and the \textit{output stage}. 
+These two stages work in complement to each other: the \textit{gain stage}, which aims to increase the magnitude of the signal, without much concern for the output impedance, while the \textit{output stage}, aims to convert the output impedance into something acceptable for the desired load (in this case it is $8 k\Omega$), without affecting the previous gain.
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = 0.8\linewidth]{fig0.pdf}
+    \caption{Audio amplifier circuit}
+    \label{fig:schematic}
+\end{figure}
+
+In Section~\ref{sec:analysis}, a theoretical analysis of the circuit is
+presented. In Section~\ref{sec:simulation}, the circuit is analysed by
+simulation, and the results are compared to the theoretical results obtained in Section~\ref{sec:analysis}. The conclusions of this study are outlined in Section~\ref{sec:conclusion}.

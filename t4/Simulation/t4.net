@@ -64,7 +64,7 @@ hardcopy vo1f.ps vdb(coll)
 
 set Cost = Mu
 let cost = $Cost$ 
-let cutoff = vecmax(abs(vdb(out)))-3
+let cutoff = vecmax(vdb(out))-3
 meas ac f1 WHEN vdb(out)=cutoff RISE=1
 meas ac f2 WHEN vdb(out)=cutoff CROSS=LAST
 let bandwidth = f2-f1
@@ -94,15 +94,14 @@ print Cost
 print merit
 
 *input impedance in ohm
-let input_impedance = 100*v(in)[40]/(v(in)[40]-v(in2)[40])
-print input_impedance
+let inputImpedance = (100*v(in)[40]/(v(in)[40]-v(in2)[40]))
+print inputImpedance
 
 *output impedance in ohm
-let output_impedance = v(out)[40]/(i(vout)[40])
-print output_impedance
+let outputImpedance = ((v(out)[40]/(i(vout)[40])))
+print outputImpedance
 echo  "freq_END"
 
-hardcopy imp.ps (100*v(in)/(v(in)-v(in2))) (v(out)/(i(vout))) input_impedance output_impedance
 
 
 quit

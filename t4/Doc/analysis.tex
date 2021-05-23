@@ -1,0 +1,198 @@
+\section{Theoretical Analysis}
+\label{sec:analysis}
+\indent
+
+% Falar apenas da versão não optimizada
+%explicar a teoria da cena e mostrar no fim os graficos do octave não optimizados
+
+In this section, the audio amplifier circuit (shown in Figure \ref{fig:schematic}) is analysed theoretically.
+
+This circuit consists of two stages. These will be analysed separately and then analysed as a whole. this circuit is present on the following figure (Figure \ref{fig:Circuit}): 
+
+%IMAGEM SO PARA FORMATAÇAO MUDAR PRA DO FILIPE
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = 0.8\linewidth]{fig1.pdf}
+    \caption{Amplifier circuit}
+    \label{fig:Circuit}
+\end{figure}
+
+
+\subsection{Gain Stage}
+
+\indent
+
+The Gain Stage consists of a common emitter amplifier with a resistor on the emitter. In this circuit the source is connected between the base of the NPN transistor and the emitter, the output is the voltage between the collector and emitter.
+
+Due to the complexity of the circuit, it can be divided into smaller circuits, which perform different functions:
+
+
+\begin{itemize}
+    \item \textbf{NPN transistor}: In the heart of this circuit, a transistor is used. Since we wanted it to operate on the forward active region (F.A.R.), it behaves as a current amplifier, and consequently as a voltage amplifier.
+    \item \textbf{Bias Circuit}: Due to the nature of a transistor, a Bias Circuit is needed to ensure the transistor is working on the F.A.R., thus guaranteeing the amplifier works as intended.
+    \item \textbf{Coupling Capacitor}: This capacitor, which is connected to the transistor, is used as a filter. This is done to create a frequency band-pass, and to introduce both higher and lower cutoff limits. This capacitor controls the bandwidth of the pass region, defining the cutoff regions.
+    \item \textbf{Emitter resistor}: This resistor is used to reduce temperature dependency of the gain. However, this has a downside: it increases the gain by a considerable margin at the cost of a high output impedance, which might make it unusable for some applications.
+    \item \textbf{Bypass capacitor}: This capacitor allows us to get the "best of both worlds". On the DC analysis, it stabilizes the temperature dependencies, Furthermore, on the AC case, the capacitor works as a bypass (short circuit, for high currents) and allows us to stabilise the gain in the desired pass-band. 
+
+\end{itemize}
+
+
+\subsubsection*{OP analysis}
+
+\indent
+
+For the operating point analysis, it is possible to compute all static voltages and currents. To do this every capacitor was removed, since the behave as an open circuit for stationary currents.
+
+Thévenin's Equivalence theorem is used, to computing the Equivalent Bias Resistance, $R_B$. It this done, it is a simple case of applying the mesh method to obtain the currents and voltage throughout the circuit. However, the transistor is a non-linear component, so we used a model to linearize the problem, similarly to what was done on the theoretical classes.
+
+
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = 0.8\linewidth]{fig2.pdf}
+    \caption{Operating Point Analysis}
+    \label{fig:OP_Analysis}
+\end{figure}
+
+One important, conclusion to take from OP analysis is the confirmation that the circuit is operating in the F.A.R.. To conclude this, the voltage across the emitter and the collector must be superior to the Saturation voltage of the transistor.
+
+\subsubsection*{Incremental analysis}
+
+\indent
+
+To calculate the AC parameters, the incremental diode model was used (for F.A.R. only). To begin with, the constants where calculated according to the following formulas:
+
+\begin{equation}
+    g_m= \frac{I_c}{V_T}
+\end{equation}
+\begin{equation}
+    r_{\pi}=\frac{\beta_c}{g_m}
+\end{equation}
+\begin{equation}
+    r_o \approx \frac{V_a}{I_c} \hspace{5pt}
+\end{equation}
+
+With these constants we can proceed to the circuit (figure \ref{fig:AC_Analysis}) analysis. By applying the mesh method, every current can be calculated.
+
+%APENAS PLACEHOLDER; PRECISAMOS DE TROCAR A FIGURA
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = 0.8\linewidth]{fig3.pdf}
+    \caption{Incremental Analysis}
+    \label{fig:AC_Analysis}
+\end{figure}
+
+The output voltage can be calculated using Ohm's law: $V= R \cdot I$. With this done, the gain, input and output impedance can be calculated.
+
+\subsection{Output Stage}
+
+\indent
+
+The Output Stage consists of a common collector amplifier with a resistor on the emitter. In this circuit, the output of the Gain Stage is connected between the base of the PNP transistor and the collector. Its output is the voltage differential between the emitter and the collector.
+
+Like the Gain Stage, it has various components such as:
+
+\begin{itemize}
+    \item \textbf{Supply Voltage}
+    \item \textbf{Emitter resistor}
+    \item \textbf{PNP transistor}: In the heart of this circuit, a transistor is used. Since we wanted it to operate on the forward active region (F.A.R.), it behaves as a current amplifier, and consequently as a voltage amplifier.
+\end{itemize}
+
+
+
+\subsubsection*{OP analysis}
+
+\indent
+
+In this case, a similar process to the Gain Stage was done.
+The simplified version of the circuit was made and analysed using mesh method and the transistor model.
+
+Normally we would need a circuit to assure the PNP transistor is on the F.A.R.. However, this is not needed since the Gain Stage increases the voltage by a factor, and its output is connected to the input of this stage, therefore assuring that the transistor stays in the active region.
+
+\subsubsection*{Incremental analysis}
+
+\indent
+
+Once again, the incremental model was used, with the following admittances and parameters:
+
+\begin{equation}
+    g_m= \frac{I_c}{V_T}
+\end{equation}
+\begin{equation}
+    g_{\pi}=\frac{g_m}{\beta_c}=\frac{1}{r_{\pi}}
+\end{equation}
+\begin{equation}
+    g_o = \frac{1}{r_o} \approx \frac{I_c}{V_a} \hspace{5pt}
+\end{equation}
+
+With these parameters, a computation using mesh method can be done. This should result in an almost unitary gain, as well as in a low output impedance (bellow $8\Omega$) and in an input impedance greater than the output impedance of the Gain Stage.
+
+
+\subsection{Final results}
+\label{subsection:Octave_Results}
+\indent
+
+With all these equations solved, these are the obtained results:
+
+\begin{itemize}
+    \item \textbf{OP analysis} (Table \ref{tab:OC}): Results of the operating point analysis
+    \item \textbf{Impedances calculation} (Figure \ref{tab:Impedances}): Calculation of the input and output impedances
+    \item \textbf{Frequency Analysis} (Table \ref{fig:FreqA}): Solving the incremental equations for each value on the frequency vector we can plot the obtained gain and the output voltage.
+    \item \textbf{Conclusion table} (Table \ref{tab:OutputParam}): Finally, the bandwidth, lowercut frequency, and merit was obtained
+\end{itemize}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value} \\ \hline
+    \input{../Analysis/OPResults.tex}
+  \end{tabular}
+  \caption{OP analysis }
+  \label{tab:OC}
+\end{table}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value} \\ \hline
+    \input{../Analysis/impedances.tex}
+  \end{tabular}
+  \caption{Impedances}
+  \label{tab:Impedances}
+\end{table}
+
+
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[width=.95\linewidth]{Mag_oc.eps}
+  \caption{Magnitude}
+\end{subfigure}
+\begin{subfigure}{.48\textwidth}
+  \centering
+  \includegraphics[width=.95\linewidth]{Phase_oc.eps}
+  \caption{Phase}
+\end{subfigure}
+\caption{Frequency analysis}
+\label{fig:FreqA}
+\end{figure}
+
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value} \\ \hline
+    \input{../Analysis/OutputResults.tex}
+  \end{tabular}
+  \caption{Output parameters from {\it Octave} }
+  \label{tab:OutputParam}
+\end{table}
