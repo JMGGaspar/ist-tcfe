@@ -62,7 +62,7 @@ Vee vee 0 -5
 Vin in 0 0 ac 1.0 sin(0 10m 1k)
 
 
-*low pass filter
+*High pass filter
 
 C1 in in_plus 220n
 R1 in_plus 0 1k
@@ -147,7 +147,7 @@ echo  "Zin_END"
 
 echo  "freq_TAB"
 *set Cost = Mu
-set Cost = 1000
+set Cost = 13447.65204
 let cost = $Cost$ 
 
 let voutm = vecmax(vdb(out))
@@ -163,7 +163,7 @@ let centralFreq = (f2*f1)^0.5
 let gainDev = abs(40-gain)
 let FreqDev = abs(1000-centralFreq)
 
-let merit = 1/(gainDev*FreqDev*cost)
+let merit = 1/((gainDev+FreqDev+1e-6)*cost)
 
 print centralFreq
 print gain

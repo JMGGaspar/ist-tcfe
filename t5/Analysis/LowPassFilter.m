@@ -23,7 +23,7 @@ grid on;
 title('Final Low-Pass Filter');
 xlabel('f (Hz)');
 ylabel('Phase (º)');
-legend("Vout","location", "northwest");
+legend("Vout","location", "southwest");
 print (hg, "Phase_LP", "-depsc");
 
 %ploting of the magnitude graphic
@@ -34,5 +34,5 @@ hold on;
 title('Final Low-Pass Filter');
 xlabel('f (Hz)');
 ylabel('Magnitude (dB)');
-legend("Vout","location", "northwest");
+legend("Vout","location", "southwest");
 print (hf, "Mag_LP", "-depsc");

@@ -11,17 +11,13 @@ Vcutoff = max(Vout_m) - 3
 
 fi = [];
 for i=1:length(Vout_m)
-  if abs(Vout_m(i) - Vcutoff) < 0.0035
-  fi = horzcat(fi, f(i));
+  if abs(Vout_m(i) - Vcutoff) < 0.00325
+  fi = horzcat(fi, f(i))
 endif
 endfor
 
 
-fi
-
 cFreq = (fi(1)*fi(length(fi)))^0.5
-%cFreq = 1000;
-
 
 
 %magnitude plot
@@ -32,25 +28,37 @@ y = ylim; % current y-axis limits
 x = xlim;
 semilogx([cFreq cFreq],[y(1) y(2)])
 hold on;
-semilogx([1000 1000],[y(1) y(2)])
-hold on;
 semilogx([x(1) x(2)],[Vcutoff Vcutoff])
 grid on;
 title('Output voltage');
 xlabel('f (Hz)');
-ylabel('Magnitude (dB)');
-legend("Vout", "Central Freq.","1000Hz","Vcutoff","location", "northwest");
-print (hf, "Mag_out", "-depsc");
+ylabel('Output voltage (dB)');
+legend("Vout", "Central Freq.","Vcutoff","location", "southwest");
+print (hf, "Vou_mt", "-depsc");
 
+hj=figure();
+semilogx(f,Magnitude);
+hold on;
+y = ylim; % current y-axis limits
+x = xlim;
+semilogx([cFreq cFreq],[y(1) y(2)])
+hold on;
+semilogx([x(1) x(2)],[(max(Magnitude)-3) (max(Magnitude)-3)])
+grid on;
+title('Output Gain');
+xlabel('f (Hz)');
+ylabel('Gain (dB)');
+legend("Vout", "Central Freq.","Vcutoff","location", "southwest");
+print (hj, "Mag_out", "-depsc");
 
 %phase plot
 hg=figure();
 semilogx(f,Vout_ph);
 grid on;
-title('Output voltage');
+title('Output Phase');
 xlabel('f (Hz)');
 ylabel('Phase (º)');
-legend("Vout","location", "northwest");
+legend("Vout","location", "southwest");
 print (hg, "Phase_out", "-depsc");
 
 

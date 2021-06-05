@@ -23,7 +23,7 @@ grid on;
 title('Initial High-Pass Filter');
 xlabel('f (Hz)');
 ylabel('Phase (º)');
-legend("Vout","location", "northwest");
+legend("Vout","location", "southwest");
 print (hg, "Phase_HP", "-depsc");
 
 %ploting of the magnitude graphic
@@ -34,5 +34,5 @@ hold on;
 title('Initial High-Pass Filter');
 xlabel('f (Hz)');
 ylabel('Magnitude (dB)');
-legend("Vout","location", "northwest");
+legend("Vout","location", "southwest");
 print (hf, "Mag_HP", "-depsc");
