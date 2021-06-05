@@ -59,8 +59,7 @@
 
 Vcc vcc 0 5
 Vee vee 0 -5
-Vin in 0 0 ac 1.0 sin(0 10m 1k)
-
+Vin in 0 0
 
 *low pass filter
 
@@ -77,6 +76,10 @@ R2 out_1 out 1k
 C2 out 0 220n
 
 
+* load
+Vl out 0 0 ac 1.0 sin(0 1.0 1k)
+
+
 
 ************************************************************************
 
@@ -86,97 +89,21 @@ C2 out 0 220n
 .control
 
 
-set hcopypscolor=1*
-set color1=black
-set color2=red
-set color3=blue
-set color4=violet
-set color5=rgb:3/8/0
-set color6=rgb:4/0/0
-set units=degrees
-
-************************************************************************
-
-
-
-
 
 
 ************************************************************************
-*Operating point analysis
-op
-************************************************************************
-
-echo  "op_TAB"
-print Vcc
-print Vee
-print in
-print in_plus
-print in_minus
-print out_1
-print out
-echo  "op_END"
-
-
-
-
-************************************************************************
-* time analysis
-tran 1e-5 1e-2
-************************************************************************
-
-hardcopy vo1.ps v(out)
-
-
-
-
-
-************************************************************************
-
-ac dec 100 10 0.1MEG
 * frequency analysis
+ac dec 100 10 0.1MEG
 ************************************************************************
 
-echo  "Zin_TAB"
+echo  "Zout_TAB"
 
 *input impedance in kohm
-let in_Impedance =(-v(in)[40]/i(Vin)[40])
-print in_Impedance
-echo  "Zin_END"
+let out_Impedance =(-v(out)[40]/Vl#branch[40])
+print out_Impedance
+echo  "Zout_END"
 
 
-echo  "freq_TAB"
-*set Cost = Mu
-set Cost = 1000
-let cost = $Cost$ 
-
-let voutm = vecmax(vdb(out))
-let vinm = vecmax(vdb(in))
-let gain = (voutm-vinm)
-let cutoff = gain-3
-
-meas ac f1 WHEN vdb(out)=cutoff RISE=1
-meas ac f2 WHEN vdb(out)=cutoff CROSS=LAST
-let centralFreq = (f2*f1)^0.5
-
-
-let gainDev = abs(40-gain)
-let FreqDev = abs(1000-centralFreq)
-
-let merit = 1/(gainDev*FreqDev*cost)
-
-print centralFreq
-print gain
-print gainDev
-print FreqDev
-print Cost
-print merit
-
-echo  "freq_END"
-
-
-hardcopy vo1f_m.ps (vdb(out)- vdb(in)) cutoff
-hardcopy vo1f_ph.ps (vp(out))
 
 
 ************************************************************************

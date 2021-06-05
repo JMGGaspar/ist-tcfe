@@ -5,13 +5,13 @@
 # ------------------------------------------------------------
 
 all:
-#	make -C Analysis
+	make -C Analysis
 	make -C Simulation
 #	make -C Doc
 #	cp Doc/report.pdf
 
 clean:
-#	make -C Analysis clean
+	make -C Analysis clean
 	make -C Simulation clean
 #	make -C Doc clean
 
