@@ -63,8 +63,8 @@ Vin in 0 0
 
 *low pass filter
 
-C1 in in_plus 220n
-R1 in_plus 0 1k
+C1 in in_plus 110n
+R1 in_plus 0 5k
 
 *Amplifier
 X1 in_plus in_minus vcc vee out_1 uA741
@@ -72,8 +72,8 @@ R3 in_minus out_1 100k
 R4 in_minus 0 1k
 
 *Low pass filter
-R2 out_1 out 1k
-C2 out 0 220n
+R2 out_1 out 0.5k
+C2 out 0 180.3278689n
 
 
 * load

@@ -56,7 +56,7 @@ fclose(File3);
 % custo sem OP AMP 124.66
 cost = 13447.65204
 
-Merit = 1/(cost*(1e-6+abs(40-Gain)+abs(1000-cFreq)))
+Merit = 1/(cost*(1e-6+abs(100-10^(Gain/20))+abs(1000-cFreq)))
 
 File2 = fopen('outputs.tex','w');
 fprintf(File2, 'Gain & %.5f dB %s\n',Gain, Ending)

@@ -22,7 +22,7 @@ semilogx(f,Fase);
 grid on;
 title('Initial High-Pass Filter');
 xlabel('f (Hz)');
-ylabel('Phase (º)');
+ylabel('Phase (degrees)');
 legend("Vout","location", "southwest");
 print (hg, "Phase_HP", "-depsc");
 

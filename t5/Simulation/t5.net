@@ -64,8 +64,8 @@ Vin in 0 0 ac 1.0 sin(0 10m 1k)
 
 *High pass filter
 
-C1 in in_plus 220n
-R1 in_plus 0 1k
+C1 in in_plus 110n
+R1 in_plus 0 5k
 
 *Amplifier
 X1 in_plus in_minus vcc vee out_1 uA741
@@ -73,8 +73,8 @@ R3 in_minus out_1 100k
 R4 in_minus 0 1k
 
 *Low pass filter
-R2 out_1 out 1k
-C2 out 0 220n
+R2 out_1 out 0.5k
+C2 out 0 180.3278689n
 
 
 
@@ -145,7 +145,6 @@ print in_Impedance
 echo  "Zin_END"
 
 
-echo  "freq_TAB"
 *set Cost = Mu
 set Cost = 13447.65204
 let cost = $Cost$ 
@@ -159,12 +158,14 @@ meas ac f1 WHEN vdb(out)=cutoff RISE=1
 meas ac f2 WHEN vdb(out)=cutoff CROSS=LAST
 let centralFreq = (f2*f1)^0.5
 
+let gain_lin=10^(Gain/20)
 
-let gainDev = abs(40-gain)
+let gainDev = abs(100-gain_lin)
 let FreqDev = abs(1000-centralFreq)
 
 let merit = 1/((gainDev+FreqDev+1e-6)*cost)
 
+echo  "freq_TAB"
 print centralFreq
 print gain
 print gainDev
