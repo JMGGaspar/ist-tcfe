@@ -99,8 +99,8 @@ ac dec 100 10 0.1MEG
 echo  "Zout_TAB"
 
 *input impedance in kohm
-let out_Impedance =(-v(out)[40]/Vl#branch[40])
-print out_Impedance
+let Zout =(-v(out)[40]/Vl#branch[40])
+print Zout
 echo  "Zout_END"
 
 

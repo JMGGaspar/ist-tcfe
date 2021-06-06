@@ -12,15 +12,15 @@ Vin_ph= 0;
 Vin_m = 10e-3;
 
 Ending = '\\ \hline';
-Ohm = "\Omega"
+Ohm = '\Omega'
 
 File1 = fopen('inputs.tex','w');
-fprintf(File1, 'R1 & %.2f ohm %s\n',R1, Ending)
-fprintf(File1, 'R2 & %.2f ohm %s\n',R2, Ending)
-fprintf(File1, 'R3 & %.2f ohm %s\n',R3, Ending)
-fprintf(File1, 'R4 & %.2f ohm %s\n',R4, Ending)
-fprintf(File1, 'C1 & %e F %s\n', C1, Ending)
-fprintf(File1, 'C2 & %e F %s\n', C2, Ending)
+fprintf(File1, '$R_1$ & $%.2f %s$ %s\n',R1,Ohm , Ending)
+fprintf(File1, '$R_2$ & $%.2f %s$ %s\n',R2,Ohm , Ending)
+fprintf(File1, '$R_3$ & $%.2f %s$ %s\n',R3,Ohm , Ending)
+fprintf(File1, '$R_4$ & $%.2f %s$ %s\n',R4,Ohm , Ending)
+fprintf(File1, '$C_1$ & $%e F$ %s\n', C1, Ending)
+fprintf(File1, '$C_2$ & $%e F$ %s\n', C2, Ending)
 fclose(File1);
 
 
@@ -47,10 +47,10 @@ ZO = R2/(j*2*pi*cFreq*C2)/ (R2+1/(j*2*pi*cFreq*C2))
 
 File3 = fopen('impedances.tex','w');
 
-fprintf(File3, '$Real Input impedance(%s)$ & %e %s\n',Ohm , real(Z1), Ending)
-fprintf(File3, '$Imaginary Input impedance(%s)$ & %e %s\n',Ohm , imag(Z1), Ending)
-fprintf(File3, '$Real Output impedance(%s)$ & %e %s\n', Ohm, real(ZO), Ending)
-fprintf(File3, '$Imaginary Output impedance(%s)$ & %e %s\n', Ohm, imag(ZO), Ending)
+fprintf(File3, '$Re(Z_{in})(%s)$ & %e %s\n',Ohm , real(Z1), Ending)
+fprintf(File3, '$Im(Z_{in})(%s)$ & %e %s\n',Ohm , imag(Z1), Ending)
+fprintf(File3, '$Re(Z_{out})(%s)$ & %e %s\n', Ohm, real(ZO), Ending)
+fprintf(File3, '$Im(Z_{out})(%s)$ & %e %s\n', Ohm, imag(ZO), Ending)
 fclose(File3);
 
 % custo sem OP AMP 124.66

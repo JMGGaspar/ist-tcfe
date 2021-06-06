@@ -1,0 +1,138 @@
+\section{Result Analysis}
+\label{sec:ResultAnalysis}
+
+
+\indent
+
+In this section the results will firstly be analysed and then compared, identifying the differences between the {\it Octave} computed results and the {\it Ngspice} simulation results. 
+
+To compare both models, graphs and tables extracted from both sources are going to be analysed and discussed.
+
+In this assignment, the theoretical ({\it Octave}) and the simulated ({\it Ngspice}) models matched with some precision. 
+
+The {\it Ngspice} results should be considered the most accurate results, and the ones which realistically model the behaviour of a real band-pass filter. 
+
+\subsection{Frequency analysis}
+
+On the graphics shown below it is possible to analyse frequency response of the band-pass filter. 
+
+\subsubsection*{Graphs}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Mag_out.eps}
+  \caption{Octave}
+  \label{fig:MagOC}
+\end{subfigure}%
+\begin{subfigure}{.49\textwidth}
+  \centering
+  \includegraphics[width=.7\linewidth, trim={2cm 1.5cm 0.5cm 6cm}, clip]{../Simulation/vo1f_m.pdf}
+  \caption{Ngspice}
+  \label{fig:MagNG}
+\end{subfigure}
+\caption{Magnitude output}
+\label{fig:Mag}
+\end{figure}
+
+The main objective of creating a pass-band and two rejection zones was achieved. It can also be seen that the operational requirements were met, with a satisfactory precision.
+
+\bigskip
+
+The phase plots can be seen below:
+
+%PHASE PLOTS
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\textwidth}
+  \centering
+  \includegraphics[width=.9\linewidth]{Phase_out.eps}
+  \caption{Octave}
+  \label{fig:PhaOC}
+\end{subfigure}%
+\begin{subfigure}{.49\textwidth}
+  \centering
+  \includegraphics[width=.7\linewidth, trim={2cm 1.5cm 0.5cm 6cm}, clip]{../Simulation/vo1f_ph.pdf}
+  \caption{Ngspice}
+  \label{fig:PhaNG}
+\end{subfigure}
+\caption{Phase output}
+\label{fig:Phase}
+\end{figure}
+
+\indent
+
+Both plots look similar and show the expected phase results. 
+
+\subsubsection*{Tables}
+
+\begin{table}[H]
+    \caption{Output parameters}
+    \begin{subtable}{.5\linewidth}
+      \centering
+        \caption{Octave}
+        \begin{tabular}{ll}
+        \hline    
+        {\bf Name} & {\bf Value} \\ \hline
+        \input{../Analysis/outputs.tex}
+        \end{tabular}
+        \label{tab:OutParamOc}
+    \end{subtable}%
+    \begin{subtable}{.5\linewidth}
+      \centering
+        \caption{Ngspice}
+        \begin{tabular}{ll}
+        \hline    
+        {\bf Name} & {\bf Value} \\ \hline
+        \input{../Simulation/freq_tab.tex}
+        \end{tabular}
+        \label{tab:OutParamNG}
+    \end{subtable} 
+    \label{tab:OutParam}
+\end{table}
+\indent
+
+
+\begin{table}[H]
+    \caption{Output and input impedances}
+    \begin{subtable}{.5\linewidth}
+      \centering
+        \caption{Octave}
+        \begin{tabular}{ll}
+        \hline    
+        {\bf Name} & {\bf Value} \\ \hline
+        \input{../Analysis/impedances.tex}
+        \end{tabular}
+        \label{tab:IMPOc}
+    \end{subtable}%
+    \begin{subtable}{.5\linewidth}
+      \centering
+        \caption{Ngspice}
+        \begin{tabular}{ll}
+        \hline    
+        {\bf Name} & {\bf Value} \\ \hline
+  	  \input{../Simulation/Zin_tab.tex}
+  	  \input{../Simulation/Zout_tab.tex}
+        \end{tabular}
+        \label{tab:IMPNG}
+    \end{subtable} 
+    \label{tab:Impedances}
+\end{table}
+\indent
+
+\subsection{General Comments}
+
+\indent
+
+
+In both the tables and the graphs, the results match with some precision. All results are in the same order of magnitude and there are no major discrepancies, which indicates that there are no major faults in the models used, even though some approximations and ideal models were used.
+
+The approximations that were used did not introduce many errors, and it can be concluded that the computational models used are accurate representations of the physical phenomena that occur.
+
+
+As we can see, even though the values match extremely decent, the merit is not great. This happens mostly due 2 factors:
+\begin{itemize}
+    \item Expensive components: even though we tried to optimise our cost, it does not matter on the final cost, since the price of the Op-Amp is extremely high in comparison. 
+    \item Due to the components restraints we could not optimise the circuit very much. Ideally, we would have used smaller resistor (for example: 100 $\Omega$ and 10 $k\Omega$) and smaller capacitors on the-low pass filter
+\end{itemize}

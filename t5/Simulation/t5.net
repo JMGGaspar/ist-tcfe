@@ -107,13 +107,17 @@ set units=degrees
 op
 ************************************************************************
 
+let inMinus = in_minus
+let inPlus = in_plus
+let out1 =  out_1
+
 echo  "op_TAB"
 print Vcc
 print Vee
 print in
-print in_plus
-print in_minus
-print out_1
+print inPlus
+print inMinus
+print out1
 print out
 echo  "op_END"
 
@@ -125,7 +129,7 @@ echo  "op_END"
 tran 1e-5 1e-2
 ************************************************************************
 
-hardcopy vo1.ps v(out)
+hardcopy vo1.ps v(out) v(in)
 
 
 
@@ -140,8 +144,8 @@ ac dec 100 10 0.1MEG
 echo  "Zin_TAB"
 
 *input impedance in kohm
-let in_Impedance =(-v(in)[40]/i(Vin)[40])
-print in_Impedance
+let Zin =(-v(in)[40]/i(Vin)[40])
+print Zin
 echo  "Zin_END"
 
 
@@ -176,7 +180,7 @@ print merit
 echo  "freq_END"
 
 
-hardcopy vo1f_m.ps (vdb(out)- vdb(in)) cutoff
+hardcopy vo1f_m.ps (vdb(out)) cutoff
 hardcopy vo1f_ph.ps (vp(out))
 
 

@@ -1,0 +1,203 @@
+\section{Theoretical Analysis}
+\label{sec:analysis}
+\indent
+
+In this section the circuit will be analysed theoretically. The circuit in case is the following (Figure \ref{fig:Circuit}):
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\linewidth]{fig1.pdf}
+    \caption{Full circuit}
+    \label{fig:Circuit}
+\end{figure}
+
+This circuit can be analysed as a combination of other smaller sub-circuits, which work in complement to each other. This circuit has a high-pass filter, responsible for the lower cutoff, a low-pass circuit, responsible for the higher cutoff, and an amplifier stage, based on an Op-Amp component.
+
+These sub-circuits will be analysed separately, and the full circuit will be further analysed as a whole. 
+
+\subsection{High-pass filter}
+
+\indent
+
+A High-pass filter (HPF) is an electronic filter that passes signals with a frequency higher than a certain cutoff frequency and attenuates signals with frequencies lower than the cutoff frequency.
+
+As seen on figure \ref{fig:Circuit}, this HPF was achieved through a basic RC circuit, which is associated to the following transfer function:
+
+\begin{equation}
+    \frac{V_{out}(s)}{V_{in}(s)} = \frac{sRC}{1+sRC}
+    \label{eq:trf_function_HPF}
+\end{equation}
+
+As exemplified by the previous equation (\ref{eq:trf_function_HPF}), the cutoff frequency is related to $RC$, the time constant ($\tau$)
+
+This following plot demonstrates the practical effect and the frequency response of a HPF:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7\linewidth]{Mag_HP.eps}
+    \caption{Frequency response of the high-pass filter used in this circuit}
+    \label{fig:freq_response_HPF}
+\end{figure}
+
+\subsection{Amplifier using Op-Amp}
+
+\indent
+
+In this section, the ideal model for the Op-Amp was used, which consists on the following conditions:
+
+\begin{equation}
+    \begin{cases}
+      i_+=i_-=0 A \\
+      v_+=v_- \\
+      A = +\infty
+    \end{cases}
+\end{equation}
+
+with these established, a relation between the Gain (A) and the resistors $R_3$ and $R_4$ can be obtained as follows:
+
+Start with KVL:
+\begin{equation}
+    0 =-V_{out} + i_{R3}\cdot R_3 + i_{R4}\cdot R_4
+\end{equation}
+Since $i_-=0$ then $i_3=i_4$. Therefore:
+\begin{equation}
+    0 = -V_{out} + i_{R3}\cdot (R_3 + R_4)
+\end{equation}
+Using Ohm's law $v_- = R_4\cdot i_4$ and $v_-=v_+=v_{in}$:
+\begin{equation}
+    0 = -V_{out} + \frac{v_{in}}{R_4}\cdot (R_3 + R_4)
+\end{equation}
+Finally:
+\begin{equation}
+     A = \frac{V_{out}}{V_{in}} = 1 + \frac{R_3}{R_4}
+\end{equation}
+
+As we only use real numbers here, the phases remain the same across the input and output.
+
+To obtain the desired 40 $dB$ gain, the resistance can be retro engineered to have a fixed relation. This gain represents that the output voltage must be 100 times higher than the voltage input. Using the previous formula, the resistance $R_3$ must be 99 times bigger than $R_4$. Since we only have 1k, 10k or 100k Ohm resistors, we chose: $R_3= 100k\Omega$ and $R_4= 1k\Omega$ 
+
+\subsection{Low-pass filter}
+
+\indent
+
+A low-pass filter (LPF) is an electronic filter that passes signals with a frequency lower than a certain cutoff frequency and attenuates signals with frequencies higher than the cutoff frequency.
+
+As seen on figure \ref{fig:Circuit}, this LPF was achieved through a basic RC circuit, which is associated to the following transfer function:
+
+\begin{equation}
+    \frac{V_{out}(s)}{V_{in}(s)} = \frac{R}{1+jRC\omega}
+    \label{eq:trf_function_LPF}
+\end{equation}
+
+This filter is slightly different from the HPF. Since a capacitor can be treated as a resistor in parallel (from an impedance point of view), the formula can be written in an similar manner. 
+
+This following plot demonstrates the practical effect and the frequency response of a LPF:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7\linewidth]{Mag_LP.eps}
+    \caption{Frequency response of the high-pass filter used in this circuit}
+    \label{fig:freq_response_HPF}
+\end{figure}
+
+\subsection{Circuit Components}
+
+\indent
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value} \\ \hline
+    \input{../Analysis/inputs.tex}
+  \end{tabular}
+  \caption{Components used }
+  \label{tab:Components}
+\end{table}
+
+To obtain this values, the components available were connected either in series or in parallel in order to obtain the best outcome. 
+
+\begin{equation}
+    C_{paralel}= C_1+C_2+...+C_n
+\end{equation}
+
+\begin{equation}
+    C_{series}= \frac{1}{\frac{1}{C_1}+\frac{1}{C_2}+...+\frac{1}{C_n}}
+\end{equation}
+
+\begin{equation}
+    R_{series}= R_1+R_2+...+R_n
+\end{equation}
+
+\begin{equation}
+    R_{paralel}= \frac{1}{\frac{1}{R_1}+\frac{1}{R_2}+...+\frac{1}{R_n}}
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{R1} was obtained connecting in parallel two 10$\Omega$ resistors;
+    \item \textbf{C1} was obtained connecting in series two 220nF capacitors;
+    \item \textbf{R2} was obtained connecting in parallel two 1$\Omega$ resistors;
+\item \textbf{C2} was obtained connecting in series one 220nF and one 1000nF capacitor;
+\end{itemize}
+%mostrar os componentes e explicar como obtivemos cada cena
+
+\subsection{Full circuit}
+
+\indent
+
+Now that we have all 3 linear circuits, we can combine them, to obtain the output voltage.
+
+With the gains combined and phases summed, we can obtain the next two graphs (Figure: \ref{fig:FreqA}:
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{.49\textwidth}
+  \centering
+  \includegraphics[width=.99\linewidth]{Mag_out.eps}%cHANGE THIS
+  \caption{Gain}
+\end{subfigure}%
+\begin{subfigure}{.49\textwidth}
+  \centering
+  \includegraphics[width=.99\linewidth]{Phase_out.eps}%cHANGE THIS
+  \caption{Phase}
+\end{subfigure}
+\caption{Frequency analysis}
+\label{fig:FreqA}
+\end{figure}
+
+
+Finally the output voltage can be obtained (Figure \ref{fig:VoltOut}) as well as its parameters (Table: \ref{tab:OutputParam}):
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.6\linewidth]{Vou_mt.eps}
+    \caption{Output Voltage}
+    \label{fig:VoltOut}
+\end{figure}
+
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value} \\ \hline
+    \input{../Analysis/outputs.tex}
+  \end{tabular}
+  \caption{Output parameters from {\it Octave} }
+  \label{tab:OutputParam}
+\end{table}
+
+With all this done, the output and input impedances can be calculated.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value} \\ \hline
+    \input{../Analysis/impedances.tex}
+  \end{tabular}
+  \caption{Input and output impedances}
+  \label{tab:ImpOC}
+\end{table}
+
+It is important to note that the input Resistance is high, as desired. However, the output impedance is not close to zero. This happens due to the low pass filter at the end, which increases this value, while the amplifier stage has close to no effect on this impedance.
