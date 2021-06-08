@@ -115,22 +115,26 @@ This following plot demonstrates the practical effect and the frequency response
   \label{tab:Components}
 \end{table}
 
-To obtain this values, the components available were connected either in series or in parallel in order to obtain the best outcome. 
+To obtain this values, the components available were connected either in series (Equations \ref{eq:Cs} and \ref{eq:Rs}) or in parallel (Equations \ref{eq:Cp} and \ref{eq:Rp}) in order to obtain the best outcome. 
 
 \begin{equation}
-    C_{paralel}= C_1+C_2+...+C_n
+    C_{eq}= \frac{1}{\frac{1}{C_1}+\frac{1}{C_2}+...+\frac{1}{C_n}}
+    \label{eq:Cs}
 \end{equation}
 
 \begin{equation}
-    C_{series}= \frac{1}{\frac{1}{C_1}+\frac{1}{C_2}+...+\frac{1}{C_n}}
+    R_{eq}= R_1+R_2+...+R_n
+    \label{eq:Rs}
 \end{equation}
 
 \begin{equation}
-    R_{series}= R_1+R_2+...+R_n
+    C_{eq}= C_1+C_2+...+C_n
+    \label{eq:Cp}
 \end{equation}
 
 \begin{equation}
-    R_{paralel}= \frac{1}{\frac{1}{R_1}+\frac{1}{R_2}+...+\frac{1}{R_n}}
+    R_{eq}= \frac{1}{\frac{1}{R_1}+\frac{1}{R_2}+...+\frac{1}{R_n}}
+    \label{eq:Rp}
 \end{equation}
 
 \begin{itemize}
@@ -139,7 +143,7 @@ To obtain this values, the components available were connected either in series 
     \item \textbf{R2} was obtained connecting in parallel two 1$\Omega$ resistors;
 \item \textbf{C2} was obtained connecting in series one 220nF and one 1000nF capacitor;
 \end{itemize}
-%mostrar os componentes e explicar como obtivemos cada cena
+
 
 \subsection{Full circuit}
 
