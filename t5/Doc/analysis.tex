@@ -24,7 +24,7 @@ A High-pass filter (HPF) is an electronic filter that passes signals with a freq
 As seen on figure \ref{fig:Circuit}, this HPF was achieved through a basic RC circuit, which is associated to the following transfer function:
 
 \begin{equation}
-    \frac{V_{out}(s)}{V_{in}(s)} = \frac{sRC}{1+sRC}
+    \frac{V_{out}(\omega)}{V_{in}(\omega)} = \frac{j\omega RC}{1+j\omega RC}
     \label{eq:trf_function_HPF}
 \end{equation}
 
@@ -85,7 +85,7 @@ A low-pass filter (LPF) is an electronic filter that passes signals with a frequ
 As seen on figure \ref{fig:Circuit}, this LPF was achieved through a basic RC circuit, which is associated to the following transfer function:
 
 \begin{equation}
-    \frac{V_{out}(s)}{V_{in}(s)} = \frac{R}{1+jRC\omega}
+    \frac{V_{out}(\omega)}{V_{in}(\omega)} = \frac{R}{1+j\omega RC}
     \label{eq:trf_function_LPF}
 \end{equation}
 
@@ -138,10 +138,10 @@ To obtain this values, the components available were connected either in series 
 \end{equation}
 
 \begin{itemize}
-    \item \textbf{R1} was obtained connecting in parallel two 10$\Omega$ resistors;
-    \item \textbf{C1} was obtained connecting in series two 220nF capacitors;
-    \item \textbf{R2} was obtained connecting in parallel two 1$\Omega$ resistors;
-\item \textbf{C2} was obtained connecting in series one 220nF and one 1000nF capacitor;
+    \item \textbf{R1} was obtained connecting in parallel two 10 $k\Omega$ resistors;
+    \item \textbf{C1} was obtained connecting in series two 220 $nF$ capacitors;
+    \item \textbf{R2} was obtained connecting in parallel two 1 $k\Omega$ resistors;
+\item \textbf{C2} was obtained connecting in series one 220 $nF$ and one 1000 $nF$ capacitor;
 \end{itemize}
 
 
